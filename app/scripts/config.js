@@ -18,6 +18,26 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: "views/main.html",
             data: { pageTitle: 'Example view' }
         })
+        .state('index.dashboard', {
+             url: "/dashboard",
+             templateUrl: "views/dashboard.html",
+             data: { pageTitle: 'Example view' }
+        })
+        .state('index.overview', {
+             url: "/overview",
+             templateUrl: "views/overview.html",
+             data: { pageTitle: 'Example view' }
+        })
+        .state('index.transactions', {
+             url: "/transactions",
+             templateUrl: "views/transactions.html",
+             data: { pageTitle: 'Example view' }
+        })
+        .state('index.triggers', {
+             url: "/triggers",
+             templateUrl: "views/triggers.html",
+             data: { pageTitle: 'Example view' }
+        })
         
 }
 angular
