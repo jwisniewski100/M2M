@@ -3,7 +3,8 @@
   "version": "1.8.0",
   "description": "M2M_Menagemen",
   "dependencies": {
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "mongoose": "^4.5.8"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
