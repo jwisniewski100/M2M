@@ -220,25 +220,5 @@ module.exports = function (grunt) {
         'watch'
     ]);
 
-    // Run build version of app
-    grunt.registerTask('server', [
-        'build',
-        'connect:dist:keepalive'
-    ]);
-
-    // Build version for production
-    grunt.registerTask('build', [
-        'clean:dist',
-        'less',
-        'useminPrepare',
-        'concat',
-        'copy:dist',
-        'cssmin',
-        'uglify',
-        'filerev',
-        'usemin',
-        'htmlmin',
-	'yaml'
-    ]);
 
 };
