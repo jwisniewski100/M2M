@@ -11,8 +11,8 @@
 
             <div class="ibox-content"><br>
                 <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
+                    <table id="escalation" datatable="" class="table table-striped table-hover dataTables-example ">
+                    <thead>
                         <tr>
                             <th>   </th>
                             <th>ID</th>
@@ -61,7 +61,10 @@
                             <td>Active</td>
                         </tr>
                         </tbody>
+
                     </table>
+
+
                 </div>
 
             </div>
@@ -71,3 +74,8 @@
         </div>
     </div>
 </div>
+<script>
+   $(document).ready(function () {
+        $('#escalation').DataTable();
+    });
+</script>

@@ -3,7 +3,8 @@
     angular.module('m2m', [
 	'ngCookies',        
 	'ui.router',                    // Routing
-    'ui.bootstrap'                // Bootstrap
+    'ui.bootstrap',                // Bootstrap
+    'oc.lazyLoad'                  // ocLazyLoad
 
     ]);
 

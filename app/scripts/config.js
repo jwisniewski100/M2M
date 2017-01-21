@@ -1,6 +1,10 @@
-function config($stateProvider, $urlRouterProvider) {
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     //$urlRouterProvider.otherwise("/index/minor");
     $urlRouterProvider.otherwise("/login/minor");
+    $ocLazyLoadProvider.config({
+            // Set to true if you want to see what and when is dynamically loaded
+            debug: false
+     });
 
     $stateProvider
 
@@ -47,17 +51,68 @@ function config($stateProvider, $urlRouterProvider) {
         .state('index.overview', {
              url: "/overview",
              templateUrl: "views/overview.html",
-             data: { pageTitle: 'Example view' }
+             data: { pageTitle: 'Example view' },
+             resolve: {
+                 loadPlugin: function ($ocLazyLoad) {
+                     return $ocLazyLoad.load([
+                         {
+                             seria: true,
+                             files: ['js/dataTables/jquery.dataTables.js','styles/dataTables/dataTables.bootstrap.css']
+                         },
+                         {
+                             files: ['js/dataTables/dataTables.bootstrap.js']
+                         },
+                         {
+                             name: 'datatables',
+                             files: ['js/dataTables/angular-datatables.min.js']
+                         }
+                     ]);
+                 }
+             }
         })
         .state('index.transactions', {
              url: "/transactions",
              templateUrl: "views/transactions.html",
-             data: { pageTitle: 'Example view' }
+             data: { pageTitle: 'Example view' },
+             resolve: {
+                  loadPlugin: function ($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          {
+                              seria: true,
+                              files: ['js/dataTables/jquery.dataTables.js','styles/dataTables/dataTables.bootstrap.css']
+                          },
+                          {
+                              files: ['js/dataTables/dataTables.bootstrap.js']
+                          },
+                          {
+                              name: 'datatables',
+                              files: ['js/dataTables/angular-datatables.min.js']
+                          }
+                      ]);
+                  }
+              }
         })
         .state('index.triggers', {
              url: "/triggers",
              templateUrl: "views/triggers.html",
-             data: { pageTitle: 'Example view' }
+             data: { pageTitle: 'Example view' },
+             resolve: {
+                  loadPlugin: function ($ocLazyLoad) {
+                      return $ocLazyLoad.load([
+                          {
+                              seria: true,
+                              files: ['js/dataTables/jquery.dataTables.js','styles/dataTables/dataTables.bootstrap.css']
+                          },
+                          {
+                              files: ['js/dataTables/dataTables.bootstrap.js']
+                          },
+                          {
+                              name: 'datatables',
+                              files: ['js/dataTables/angular-datatables.min.js']
+                          }
+                      ]);
+                  }
+              }
         })
         
 }
