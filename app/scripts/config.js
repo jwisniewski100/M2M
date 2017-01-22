@@ -1,5 +1,6 @@
 function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
     //$urlRouterProvider.otherwise("/index/minor");
+
     $urlRouterProvider.otherwise("/login/minor");
     $ocLazyLoadProvider.config({
             // Set to true if you want to see what and when is dynamically loaded
@@ -12,13 +13,13 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
             abstract: true,
             url: "/login",
             //templateUrl: "views/common/content.html",
-            templateUrl: "views/common/contentLogin.html",
+            templateUrl: "views/common/contentLogin.html"
             //templateUrl: "login.html",
         })
         .state('index', {
             abstract: true,
             url: "/index",
-            templateUrl: "views/common/content.html",
+            templateUrl: "views/common/content.html"
             //templateUrl: "login.html",
         })
 	    .state('index.minor', {
