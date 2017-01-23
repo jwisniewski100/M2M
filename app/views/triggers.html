@@ -68,14 +68,129 @@
                 </div>
 
             </div>
-            <button type="button" class="btn btn-w-m btn-primary">Create Trigger</button>
-            <button type="button" class="btn btn-w-m btn-primary">Delete Trigger</button>
+            <button type="button" class="btn btn-w-m btn-primary" id="btnCT" data-toggle="modal" data-target="#CT">Create Trigger</button>
+            <button type="button" class="btn btn-w-m btn-primary" id="btnDT" data-toggle="modal" data-target="#DT" disabled>Delete Trigger</button>
 
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="CT" tabindex="-1" role="dialog" aria-labelledby="Createlabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="Createlabel">Create Trigger</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group"><label>Trigger name</label> <input type="name" placeholder="Name" class="form-control"></div>
+                    <div class="form-group">
+                        <label class>Select type</label>
+                        <div class="input-group">
+                            <select data-placeholder="Select type" class="chosen-select" style="width:350px;" tabindex="2" name="items">
+                                <option value="point">Point in time</option>
+                                <option value="time">Time past from first activity</option>
+                                <option value="threshold">Data threshold</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group"><label> Enter: </label> <input id="custom" type="date" placeholder="DD/MM/YYYY" class="form-control"> </div>
+                    <div class="form-group">
+                        <label class>Select action</label>
+                        <div class="input-group">
+                            <select data-placeholder="Select type" class="chosen-select" style="width:350px;" tabindex="2" name="items2">
+                                <option value="changeSP">Change SP</option>
+                                <option value="sms">Send SMS</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div id="showdiv" class="form-group">
+                        <label>Select SP</label>
+                            <div class="input-group">
+                                <select data-placeholder="Select SIM..." class="chosen-select" style="width:350px;" tabindex="2">
+                                    <option value="">Select SP</option> 
+                                </select>
+                            </div>
+                    </div>
+                    <textarea style="display:none" class="form-control" style="min-width: 100%" placeholder="Message" id="SMSarea1"></textarea>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="DT" tabindex="-1" role="dialog" aria-labelledby="DElabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="DElabel">Delete</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div><label>Do you want to delete checked triggers?</label></div>
+                </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Confirm</button>
+                </div>
+            </div>
+        </div>
+
+
 <script>
    $(document).ready(function () {
         $('#escalation').DataTable();
     });
+</script>
+
+<script>
+var counterChecked = 0;
+
+$('#escalation').on('change', 'input[type="checkbox"]', function() {
+
+    this.checked ? counterChecked++ : counterChecked--;
+    counterChecked > 0 ? $('#btnDT').prop("disabled", false): $('#btnDT').prop("disabled", true);
+
+});
+</script>
+
+<script>
+$("select[name=items]").change(function() {
+    if ($(this).val() == 'point') {
+        $("#custom").prop('type', 'date');
+        $("#custom").prop('placeholder', 'DD/MM/YYYY');
+    }
+    if ($(this).val() == 'time') {
+        $("#custom").prop('type', 'number');
+        $("#custom").prop('placeholder', 'Number');
+    }
+    if ($(this).val() == 'threshold') {
+        $("#custom").prop('type', 'number');
+        $("#custom").prop('placeholder', 'Value');
+
+    }
+});
+</script>
+
+<script>
+$("select[name=items2]").change(function() {
+    if ($(this).val() == 'changeSP') {
+        $("#showdiv").show();
+        $("#SMSarea1").hide();
+    }
+    if ($(this).val() == 'sms') {
+        $("#showdiv").hide();
+        $("#SMSarea1").show();
+    }
+});
 </script>
