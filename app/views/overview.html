@@ -433,11 +433,11 @@
             </div>
 
             <button type="button" class="btn btn-w-m btn-primary" data-toggle="modal" data-target="#Order">Order</button>
-            <button type="button" class="btn btn-w-m btn-primary" id="btnAC" data-toggle="modal" data-target="#AC" disabled>Activate</button>
-            <button type="button" class="btn btn-w-m btn-primary" id="btnTE" data-toggle="modal" data-target="#TE" disabled>Terminate</button>
-            <button type="button" class="btn btn-w-m btn-primary" data-toggle="modal" data-target="#SP">Create SP</button>
-            <button type="button" class="btn btn-w-m btn-primary" data-toggle="modal" data-target="#CSP">Change SP</button>
-            <button type="button" class="btn btn-w-m btn-primary" data-toggle="modal" data-target="#SMS">Send SMS</button>
+            <button type="button" class="btn btn-w-m btn-primary" id="btnAC" data-toggle="modal" data-target="#AC" name = "imsiButton" disabled>Activate</button>
+            <button type="button" class="btn btn-w-m btn-primary" id="btnTE" data-toggle="modal" data-target="#TE" name = "imsiButton" disabled>Terminate</button>
+            <button type="button" class="btn btn-w-m btn-primary" data-toggle="modal" data-target="#SP" name = "imsiButton">Create SP</button>
+            <button type="button" class="btn btn-w-m btn-primary" data-toggle="modal" data-target="#CSP" name = "imsiButton">Change SP</button>
+            <button type="button" class="btn btn-w-m btn-primary" id="btnSMS" data-toggle="modal" data-target="#SMS" name = "imsiButton" disabled>Send SMS</button>
 <br>
 
 
@@ -484,11 +484,15 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="AClabel">Activate</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">IMSI</div>
+                        <div class="panel-body" name="currentIMSI"> </div>
+                    </div>
                 </div>
 
                 <div class="modal-body">
                    <div class="form-group">
-                        <label class="font-noraml">Service profile</label>
+                        <label>Service profile</label>
                         <div class="input-group">
                             <select data-placeholder="Service profile" class="chosen-select" style="width:350px;" tabindex="2">
                                 <option value="">Service profile</option> 
@@ -505,6 +509,32 @@
                 </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="TE" tabindex="-1" role="dialog" aria-labelledby="TElabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="TElabel">Terminate</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">IMSI</div>
+                        <div class="panel-body" name="currentIMSI"> </div>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <div><label>Do you want to terminate checked records?</label></div>
+                </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Confirm</button>
+                </div>
+            </div>
+        </div>
+
 
 
 
@@ -539,11 +569,15 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="CSPlabel">Change SP</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">IMSI</div>
+                        <div class="panel-body" name="currentIMSI"> </div>
+                    </div>
                     </div>
 
                     <div class="modal-body">
                         <div class="form-group">
-                        <label class="font-noraml">Select</label>
+                        <label>Select</label>
                             <div class="input-group">
                                 <select data-placeholder="Select SIM..." class="chosen-select" style="width:350px;" tabindex="2">
                                     <option value="">Select SP</option> 
@@ -568,6 +602,10 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="SMSlabel">Send SMS</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">IMSI</div>
+                        <div class="panel-body" name="currentIMSI"> </div>
+                    </div>
                     </div>
 
                     <div class="modal-body">
@@ -596,43 +634,7 @@
     console.log("Getting all SIMs");
     var simList = Sim.find({});
     console.log(simList)*/
-    var dataSet = [
-        [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
-        [ "Garrett Winters", "Accountant", "Tokyo", "8422", "2011/07/25", "$170,750" ],
-        [ "Ashton Cox", "Junior Technical Author", "San Francisco", "1562", "2009/01/12", "$86,000" ],
-        [ "Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "6224", "2012/03/29", "$433,060" ],
-        [ "Airi Satou", "Accountant", "Tokyo", "5407", "2008/11/28", "$162,700" ],
-        [ "Brielle Williamson", "Integration Specialist", "New York", "4804", "2012/12/02", "$372,000" ],
-        [ "Herrod Chandler", "Sales Assistant", "San Francisco", "9608", "2012/08/06", "$137,500" ],
-        [ "Rhona Davidson", "Integration Specialist", "Tokyo", "6200", "2010/10/14", "$327,900" ],
-        [ "Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "2009/09/15", "$205,500" ],
-        [ "Sonya Frost", "Software Engineer", "Edinburgh", "1667", "2008/12/13", "$103,600" ],
-        [ "Jena Gaines", "Office Manager", "London", "3814", "2008/12/19", "$90,560" ],
-        [ "Quinn Flynn", "Support Lead", "Edinburgh", "9497", "2013/03/03", "$342,000" ],
-        [ "Charde Marshall", "Regional Director", "San Francisco", "6741", "2008/10/16", "$470,600" ],
-        [ "Haley Kennedy", "Senior Marketing Designer", "London", "3597", "2012/12/18", "$313,500" ],
-        [ "Tatyana Fitzpatrick", "Regional Director", "London", "1965", "2010/03/17", "$385,750" ],
-        [ "Michael Silva", "Marketing Designer", "London", "1581", "2012/11/27", "$198,500" ],
-        [ "Paul Byrd", "Chief Financial Officer (CFO)", "New York", "3059", "2010/06/09", "$725,000" ],
-        [ "Gloria Little", "Systems Administrator", "New York", "1721", "2009/04/10", "$237,500" ],
-        [ "Bradley Greer", "Software Engineer", "London", "2558", "2012/10/13", "$132,000" ],
-        [ "Dai Rios", "Personnel Lead", "Edinburgh", "2290", "2012/09/26", "$217,500" ],
-        [ "Jenette Caldwell", "Development Lead", "New York", "1937", "2011/09/03", "$345,000" ],
-        [ "Yuri Berry", "Chief Marketing Officer (CMO)", "New York", "6154", "2009/06/25", "$675,000" ],
-        [ "Caesar Vance", "Pre-Sales Support", "New York", "8330", "2011/12/12", "$106,450" ],
-        [ "Doris Wilder", "Sales Assistant", "Sidney", "3023", "2010/09/20", "$85,600" ],
-        [ "Angelica Ramos", "Chief Executive Officer (CEO)", "London", "5797", "2009/10/09", "$1,200,000" ],
-        [ "Gavin Joyce", "Developer", "Edinburgh", "8822", "2010/12/22", "$92,575" ],
-        [ "Jennifer Chang", "Regional Director", "Singapore", "9239", "2010/11/14", "$357,650" ],
-        [ "Brenden Wagner", "Software Engineer", "San Francisco", "1314", "2011/06/07", "$206,850" ],
-        [ "Fiona Green", "Chief Operating Officer (COO)", "San Francisco", "2947", "2010/03/11", "$850,000" ],
-        [ "Shou Itou", "Regional Marketing", "Tokyo", "8899", "2011/08/14", "$163,000" ],
-        [ "Michelle House", "Integration Specialist", "Sidney", "2769", "2011/06/02", "$95,400" ],
-        [ "Suki Burks", "Developer", "London", "6832", "2009/10/22", "$114,500" ],
-        [ "Prescott Bartlett", "Technical Author", "London", "3606", "2011/05/07", "$145,000" ],
-        [ "Gavin Cortez", "Team Leader", "San Francisco", "2860", "2008/10/26", "$235,500" ],
-        [ "Martena Mccray", "Post-Sales support", "Edinburgh", "8240", "2011/03/09", "$324,050" ],
-        [ "Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675" ]];
+
   /*$(document).ready(function () {
         $('#escalation').DataTable();
     });*/
@@ -664,7 +666,32 @@ $('#escalation').on('change', 'input[type="checkbox"]', function() {
     this.checked ? counterChecked++ : counterChecked--;
     counterChecked > 0 ? $('#btnAC').prop("disabled", false): $('#btnAC').prop("disabled", true);
     counterChecked > 0 ? $('#btnTE').prop("disabled", false): $('#btnTE').prop("disabled", true);
+    counterChecked > 0 ? $('#btnSMS').prop("disabled", false): $('#btnSMS').prop("disabled", true);
 
 });
 </script>
+
+
+
+
+
+<script>
+$('button[name=imsiButton]').on( "click", function() {
+$('div[name=currentIMSI]').empty();
+var n = 1;
+var txt = ' ';
+for (var x=0;x<200;x+=1)
+{
+    if($("tr td input").eq(x).prop('checked'))
+    {
+        txt += $("tr td").eq(n).text();
+        txt += ", ";
+    }
+    n+=7;
+}
+$('div[name=currentIMSI]').append(" "+txt+" ");
+});
+</script>
+
+
 
