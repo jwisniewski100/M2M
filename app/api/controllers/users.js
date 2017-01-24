@@ -75,18 +75,11 @@ module.exports.login = function(req, res)
         }
         else
             return res.redirect('http://localhost:9000/#/login/minor');
-       /* if (!user) {
-            return {
-                message: 'Incorrect username.'
-            };
-        }
-        if (!user.password == req.body.password) {
-            return  {
-                message: 'Incorrect password.'
-            };
-        }
-        return  {
-            message: 'Correct password.'
-        }*/
+
     });
+}
+
+module.exports.logout = function(req, res)
+{
+            return res.redirect('http://localhost:9000/#/login/minor');
 }

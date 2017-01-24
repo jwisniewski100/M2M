@@ -5,6 +5,7 @@ var ctrlSims = require('../controllers/sims');
 
 //Users
 router.post('/login', ctrlUsers.login);
+router.get('/logout', ctrlUsers.logout);
 router.post('/user', ctrlUsers.getByUserName);
 router.post('/users', ctrlUsers.addUser);
 //router.get('/users/:userid', ctrlUsers.usersGetByIdOne);
