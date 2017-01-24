@@ -60,13 +60,22 @@ module.exports.login = function(req, res)
 {
     console.log("CHECK PASSWORD");
     console.log(req.body.username);
-    var userData;
 
     User.findOne({company_name: req.body.username}, function(err, user) {
         if (err) {
             return err;
         }
-        if (!user) {
+        console.log("user:" + user);
+        if(user == undefined)
+            return res.redirect('http://localhost:9000/#/login/minor');
+        if(user.password == req.body.password)
+        {
+            console.log('Correct password.');
+            return res.redirect('http://localhost:9000/#/index/dashboard');
+        }
+        else
+            return res.redirect('http://localhost:9000/#/login/minor');
+       /* if (!user) {
             return {
                 message: 'Incorrect username.'
             };
@@ -78,13 +87,6 @@ module.exports.login = function(req, res)
         }
         return  {
             message: 'Correct password.'
-        }
+        }*/
     });
-
-    /*console.log(userData.password);
-    if(req.body.password == userData.password)
-        console.log("PASSWORD OK");
-    else
-        console.log("INVALID PASSWORD");
-    //console.log(user);*/
 }
