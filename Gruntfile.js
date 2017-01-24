@@ -1,6 +1,10 @@
 'use strict';
 module.exports = function (grunt) {
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-express-server');
+	grunt.loadNpmTasks('grunt-open');
+
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
 
@@ -38,7 +42,32 @@ module.exports = function (grunt) {
 		{expand: true, cwd: '../doc', src: ['**/*.yaml'], dest: 'app/cdam-spec/res1/'}
 	      ]
 	    },
-	},	
+	},
+	watch: {
+      express: {
+        files:  [ '**/*.js' ],
+        tasks:  [ 'express:dev' ],
+        options: {
+          spawn: false
+        }
+      }
+    },
+    express: {
+        options: {
+            port: 3000
+        },
+        dev: {
+            options: {
+                script: 'server/server.js',
+                debug: true
+        }
+      }
+    },
+	open: {
+		dev: {
+			path: 'http://localhost:<%= express.options.port%>'
+		}
+    },
 
         // Project settings
         m2m: appConfig,
@@ -211,14 +240,19 @@ module.exports = function (grunt) {
             html: ['dist/index.html']
         }
     });
-
+    
+    /*grunt.registerTask('serve', [ 'express:dev', 'open:dev', 'watch' ]);
+    
+    grunt.task.run('serve');*/
+    
     // Run live version of app
     grunt.registerTask('live', [
+        'express:dev', 'open:dev',
         'clean:server',
         'copy:styles',
         'connect:livereload',
         'watch'
     ]);
-
-
+    
+    
 };
