@@ -26,11 +26,11 @@ module.exports.orderSIM = function(req, res)
 }
 
 /* Get all SIMs */
-module.exports.getAllSIMs = function(req, res) {
+/*module.exports.getAllSIMs = function(req, res) {
     console.log("Getting all SIMs");
     var simList = Sim.find({});
     console.log(simList)
-};
+};*/
 
 /*var buildLocationList = function(req, res, results, stats) {
     var locations = [];

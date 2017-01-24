@@ -51,13 +51,13 @@ server.use('/', routes);
     mongoose.model('users').find(function(err, users){
         res.send(users);
     });
-});
+});*/
 
 server.get('/sims', function(req, res){
-    mongoose.model('sims').find(function(err, users){
-        res.send(users);
+    mongoose.model('sims').find(function(err, sims){
+        res.send(sims);
     });
-});*/
+});
 
 // Import routes.js
 //require('./routes')(server);
