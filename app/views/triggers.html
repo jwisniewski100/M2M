@@ -95,7 +95,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group"><label> Enter: </label> <input id="custom" type="date" placeholder="DD/MM/YYYY" class="form-control"> </div>
+                    <div class="form-group"><label> Enter: </label> <input id="custom" type="datetime-local" placeholder="DD/MM/YYYY HH:MM" class="form-control"> </div>
                     <div class="form-group">
                         <label class>Select action</label>
                         <div class="input-group">
@@ -123,74 +123,105 @@
                     <button type="button" class="btn btn-primary">Save</button>
                 </div>
         </div>
-    </div>
+</div>
 
 
-    <div class="modal fade" id="DT" tabindex="-1" role="dialog" aria-labelledby="DElabel" aria-hidden="true">
+<div class="modal fade" id="DT" tabindex="-1" role="dialog" aria-labelledby="DElabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="DElabel">Delete</h4>
                 </div>
-
                 <div class="modal-body">
-                    <div><label>Do you want to delete checked triggers?</label></div>
+                    <div><p>Do you want to delete checked triggers?</p></div>
                 </div>
-
-                </div>
+            </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Confirm</button>
                 </div>
-            </div>
         </div>
+</div>
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" id="showInfoTriggers">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="infolabel">Trigger info</h4>
+            </div>                
+            <div class="modal-body">
+                <label>IMSI: </label><p>Z bazy</p>
+                <label>Trigger type: </label><p>Z bazy</p>
+                <label>Execution date: </label><p>Z bazy</p>
+                <label>Action: </label><p>Z bazy</p>
+            </div>  
+        </div>
+    </div>
+</div>  
+
 
 
 <script>
    $(document).ready(function () {
-        $('#escalation').DataTable();
+        $('#escalation').DataTable( {
+             "columnDefs": [
+            {className: "clickable-row", "targets": [1] }
+                            ]
+            
+    })});
+</script>
+
+<script>
+    $(document).ready(function () {
+        var counterChecked = 0;
+        $('#escalation').on('change', 'input[type="checkbox"]', function() {
+            this.checked ? counterChecked++ : counterChecked--;
+            counterChecked > 0 ? $('#btnDT').prop("disabled", false): $('#btnDT').prop("disabled", true);
+
+    })});
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("select[name=items]").change(function() {
+            if ($(this).val() == 'point') {
+                $("#custom").prop('type', 'datetime-local');
+                $("#custom").prop('placeholder', 'DD/MM/YYYY HH:MM');
+            }
+            if ($(this).val() == 'time') {
+                $("#custom").prop('type', 'number');
+                $("#custom").prop('placeholder', 'Number');
+            }
+            if ($(this).val() == 'threshold') {
+                $("#custom").prop('type', 'number');
+                $("#custom").prop('placeholder', 'Value');
+            }
+    })});
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("select[name=items2]").change(function() {
+            if ($(this).val() == 'changeSP') {
+                $("#showdiv").show();
+                $("#SMSarea1").hide();
+            }
+            if ($(this).val() == 'sms') {
+                $("#showdiv").hide();
+                $("#SMSarea1").show();
+            }
+    })});
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#escalation tr td:not(:first-child)").attr('data-toggle','modal');
+        $("#escalation tr td:not(:first-child)").attr('data-target','#showInfoTriggers');
+        $("#escalation tr td:not(:first-child)").attr('style','cursor:pointer');
     });
 </script>
 
-<script>
-var counterChecked = 0;
-
-$('#escalation').on('change', 'input[type="checkbox"]', function() {
-
-    this.checked ? counterChecked++ : counterChecked--;
-    counterChecked > 0 ? $('#btnDT').prop("disabled", false): $('#btnDT').prop("disabled", true);
-
-});
-</script>
-
-<script>
-$("select[name=items]").change(function() {
-    if ($(this).val() == 'point') {
-        $("#custom").prop('type', 'date');
-        $("#custom").prop('placeholder', 'DD/MM/YYYY');
-    }
-    if ($(this).val() == 'time') {
-        $("#custom").prop('type', 'number');
-        $("#custom").prop('placeholder', 'Number');
-    }
-    if ($(this).val() == 'threshold') {
-        $("#custom").prop('type', 'number');
-        $("#custom").prop('placeholder', 'Value');
-
-    }
-});
-</script>
-
-<script>
-$("select[name=items2]").change(function() {
-    if ($(this).val() == 'changeSP') {
-        $("#showdiv").show();
-        $("#SMSarea1").hide();
-    }
-    if ($(this).val() == 'sms') {
-        $("#showdiv").hide();
-        $("#SMSarea1").show();
-    }
-});
-</script>
