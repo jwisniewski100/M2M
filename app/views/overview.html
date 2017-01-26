@@ -45,20 +45,18 @@
     </div>
 </div>
 
-<form class="modal fade" id="Order" tabindex="-1" role="dialog" aria-labelledby="Orderlabel" aria-hidden="true" action="http://localhost:3000/sims" method="post">
+<form class="modal fade" id="Order" tabindex="-1" role="dialog" action="http://localhost:3000/sims" method="post">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="Orderlabel">Order</h4>
             </div>
-
             <div class="modal-body">
                 <div class="form-group">
                     <label class="font-noraml">Select</label>
                     <div class="input-group" >
-                        <select data-placeholder="Select SIM..." class="chosen-select" style="width:350px;" tabindex="2" type="text" name="sim_type" >
-                            <option value="">Select SIM</option> 
+                        <select data-placeholder="SelectSIM" class="chosen-select" style="width:350px;" tabindex="2" type="text" name="sim_type" >
                             <option value="ClassicMini">ClassicMini</option>
                             <option value="ClassicMicro">ClassicMicro</option>
                             <option value="A1Clasic">A1Clasic</option>
@@ -67,7 +65,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group"><label>Quantity</label> <input type="number" name="quantity" placeholder="Quantity" class="form-control"></div>
+                <div class="form-group"><label>Quantity</label> <input type="number" name="quantity" min="1" placeholder="Quantity" class="form-control"  tabindex="3" required></div>
             </div>
         </div>
             <div class="modal-footer">
@@ -79,11 +77,11 @@
 
 
 
-<div class="modal fade" id="AC" tabindex="-1" role="dialog" aria-labelledby="AClabel" aria-hidden="true">
+<div class="modal fade" id="AC" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="AClabel">Activate</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">IMSI</div>
@@ -109,11 +107,11 @@
 </div>
 
 
-<div class="modal fade" id="TE" tabindex="-1" role="dialog" aria-labelledby="TElabel" aria-hidden="true">
+<div class="modal fade" id="TE" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="TElabel">Terminate</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">IMSI</div>
@@ -132,17 +130,17 @@
 </div>
 
 
-<div class="modal fade" id="SP" tabindex="-1" role="dialog" aria-labelledby="SPlabel" aria-hidden="true">
+<div class="modal fade" id="SP" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="SPlabel">Create SP</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group"><label>Name</label> <input type="name" placeholder="Name" class="form-control"></div>
-                <div class="form-group"><label>Data limit</label> <input type="name" placeholder="Data limit" class="form-control"></div>
-                <div class="form-group"><label>SMS limit</label> <input type="name" placeholder="SMS limit" class="form-control"></div>
+                <div class="form-group"><label>Name</label> <input type="name" placeholder="Name" class="form-control" required></div>
+                <div class="form-group"><label>Data limit</label> <input type="number" placeholder="Data limit" class="form-control" required></div>
+                <div class="form-group"><label>SMS limit</label> <input type="number" placeholder="SMS limit" class="form-control" required></div>
                 <label>LTE enabled: <input type="checkbox"></label><br/>
             <!--    <div class="form-check">
                     <label class="form-check-label">
@@ -161,11 +159,11 @@
 
 
 
-<div class="modal fade" id="CSP" tabindex="-1" role="dialog" aria-labelledby="CSPlabel" aria-hidden="true">
+<div class="modal fade" id="CSP" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="CSPlabel">Change SP</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">IMSI</div>
@@ -192,11 +190,11 @@
 
 
 
-<div class="modal fade" id="SMS" tabindex="-1" role="dialog" aria-labelledby="SMSlabel" aria-hidden="true">
+<div class="modal fade" id="SMS" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="SMSlabel">Send SMS</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">IMSI</div>
