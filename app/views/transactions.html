@@ -48,8 +48,39 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" id="showInfoTransactions">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="infolabel">Transaction info</h4>
+            </div>
+            
+            <div class="modal-body">
+                <label>IMSI: </label><p> Z bazy</p>
+
+            </div>  
+        </div>
+    </div>
+</div>  
+
+
 <script>
    $(document).ready(function () {
-        $('#escalation').DataTable();
+        $('#escalation').DataTable( {
+             "columnDefs": [
+            {className: "clickable-row", "targets": [1] }
+            ]        
+    })});
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#escalation tr td").attr('data-toggle','modal');
+        $("#escalation tr td").attr('data-target','#showInfoTransactions');
+        $("#escalation tr td").attr('style','cursor:pointer');
     });
 </script>
+
