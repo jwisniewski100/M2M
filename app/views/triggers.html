@@ -75,16 +75,16 @@
     </div>
 </div>
 
-<div class="modal fade" id="CT" tabindex="-1" role="dialog" aria-labelledby="Createlabel" aria-hidden="true">
+<div class="modal fade" id="CT" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="Createlabel">Create Trigger</h4>
                 </div>
 
                 <div class="modal-body">
-                    <div class="form-group"><label>Trigger name</label> <input type="name" placeholder="Name" class="form-control"></div>
+                    <div class="form-group"><label>Trigger name</label> <input type="name" placeholder="Name" class="form-control" required></div>
                     <div class="form-group">
                         <label class>Select type</label>
                         <div class="input-group">
@@ -95,7 +95,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group"><label> Enter: </label> <input id="custom" type="datetime-local" placeholder="DD/MM/YYYY HH:MM" class="form-control"> </div>
+                    <div class="form-group"><label> Enter: </label> <input id="custom" type="datetime-local" placeholder="DD/MM/YYYY HH:MM" class="form-control" required> </div>
                     <div class="form-group">
                         <label class>Select action</label>
                         <div class="input-group">
@@ -126,11 +126,11 @@
 </div>
 
 
-<div class="modal fade" id="DT" tabindex="-1" role="dialog" aria-labelledby="DElabel" aria-hidden="true">
+<div class="modal fade" id="DT" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="DElabel">Delete</h4>
                 </div>
                 <div class="modal-body">
@@ -146,11 +146,11 @@
 
 
 
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" id="showInfoTriggers">
+<div class="modal fade" tabindex="-1" role="dialog" id="showInfoTriggers">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="infolabel">Trigger info</h4>
             </div>                
             <div class="modal-body">
@@ -176,17 +176,14 @@
 </script>
 
 <script>
-    $(document).ready(function () {
         var counterChecked = 0;
         $('#escalation').on('change', 'input[type="checkbox"]', function() {
             this.checked ? counterChecked++ : counterChecked--;
             counterChecked > 0 ? $('#btnDT').prop("disabled", false): $('#btnDT').prop("disabled", true);
-
-    })});
+    });
 </script>
 
 <script>
-    $(document).ready(function () {
         $("select[name=items]").change(function() {
             if ($(this).val() == 'point') {
                 $("#custom").prop('type', 'datetime-local');
@@ -200,11 +197,10 @@
                 $("#custom").prop('type', 'number');
                 $("#custom").prop('placeholder', 'Value');
             }
-    })});
+    });
 </script>
 
 <script>
-    $(document).ready(function () {
         $("select[name=items2]").change(function() {
             if ($(this).val() == 'changeSP') {
                 $("#showdiv").show();
@@ -214,14 +210,12 @@
                 $("#showdiv").hide();
                 $("#SMSarea1").show();
             }
-    })});
+    });
 </script>
 
 <script>
-    $(document).ready(function () {
         $("#escalation tr td:not(:first-child)").attr('data-toggle','modal');
         $("#escalation tr td:not(:first-child)").attr('data-target','#showInfoTriggers');
         $("#escalation tr td:not(:first-child)").attr('style','cursor:pointer');
-    });
 </script>
 
