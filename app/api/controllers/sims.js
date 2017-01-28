@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Sim = mongoose.model('sims');
 
-
 var sendJSONresponse = function(res, status, content) {
     res.status(status);
     res.json(content);
@@ -13,8 +12,8 @@ module.exports.orderSIM = function(req, res)
     console.log("ADDING NEW SIM");
     console.log(req.body);
     var sim = new Sim({
-        IMSI: 231000020000,
-        MSISDN: 43003001000000,
+        /*IMSI: getNextSequence('IMSI'),
+        MSISDN: getNextSequence('MSISDN'),*/
         activated: Date.now(),
         service: req.body.sim_type,
         state: "Active",
@@ -24,6 +23,8 @@ module.exports.orderSIM = function(req, res)
             return console.error(err);
     });
 }
+
+
 
 /* Get all SIMs */
 /*module.exports.getAllSIMs = function(req, res) {
