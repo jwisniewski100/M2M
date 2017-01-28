@@ -45,7 +45,7 @@
     </div>
 </div>
 
-<form class="modal fade" id="Order" tabindex="-1" role="dialog" action="http://localhost:3000/sims" method="post">
+<form name="simOrderForm" class="modal fade" id="Order" tabindex="-1" role="dialog" action="http://localhost:3000/sims" method="post" onsubmit="$('#Order').modal('hide')">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -70,7 +70,7 @@
         </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit"  class="btn btn-primary">Save</button>
+                <button name="simOrderSubmit" type="submit"  class="btn btn-primary" >Save</button>
             </div>
     </div>
 </form>

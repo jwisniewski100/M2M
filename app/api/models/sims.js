@@ -1,4 +1,6 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    autoIncrement = require('mongoose-auto-increment');
 var Schema = mongoose.Schema;
 
 var simSchema = new Schema({
@@ -13,4 +15,18 @@ var simSchema = new Schema({
     }
 });
 
-mongoose.model('sims', simSchema);
+simSchema.plugin(autoIncrement.plugin, {
+    model: 'SIM',
+    field: 'IMSI',
+    startAt: 231000020000,
+    incrementBy: 1
+});
+
+simSchema.plugin(autoIncrement.plugin, {
+    model: 'SIM',
+    field: 'MSISDN',
+    startAt: 43003001000000,
+    incrementBy: 1
+});
+
+var SIM = mongoose.model('sims', simSchema);

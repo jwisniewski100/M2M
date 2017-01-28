@@ -1,13 +1,13 @@
 var express = require("express");
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    autoIncrement = require('mongoose-auto-increment');
 var bodyParser = require('body-parser');
 //var fs = require('fs');
 
 
 
-//MODELS
-require('../app/api/models/users');
-require('../app/api/models/sims');
+
 
 
 
@@ -36,13 +36,18 @@ server.listen(port, hostname);
 console.log("Server: Express listening: http://" + hostname + ":" + port);
 
 //mongoose connect
-mongoose.connect('mongodb://localhost/m2m', function(err) {
+var connection = mongoose.connect('mongodb://localhost/m2m', function(err) {
     if(err) {
         console.log('connection error', err);
     } else {
         console.log('Database: MongoDB connection successful');
     }
 });
+autoIncrement.initialize(connection);
+
+//MODELS
+require('../app/api/models/users');
+require('../app/api/models/sims');
 
 var routes = require('../app/api/routes/index');
 server.use('/', routes);

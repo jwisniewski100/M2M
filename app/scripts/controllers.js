@@ -41,4 +41,11 @@
 
 	};
 
+    $('#Order').submit(function(e) {
+        e.preventDefault();
+        // Coding
+        $('[name="simOrderForm"]').modal('toggle'); //or  $('#IDModal').modal('hide');
+        return false;
+    });
+
 })();
