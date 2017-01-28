@@ -1,3 +1,8 @@
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="../scripts/charts.js"></script>
+
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-12">
@@ -7,52 +12,120 @@
                     Dashboard
                 </h1>
             </div>
-         	<div class="modal-header"> 
+        </div>
+        <div class="col-lg-4">
+        	<div class="modal-header"> 
            		<h4 class="modal-title">
              		<i class="glyphicon glyphicon-user"></i> 
              		User Profile
              	</h4> 
          	</div> 
-            	<div class="table-responsive ">
-                             
-                     <table class="table table-bordered" style="width: 30%; table-layout: fixed">
+            <div class="table-responsive ">                 
+            	<table class="table table-bordered">
+                	<tr>
+                     	<th width="35%">First Name</th>
+                     	<td id="txt_fname" ></td>
+                     </tr>              
+                     
                      <tr>
-                     <th>First Name</th>
-                     <td id="txt_fname" ></td>
-                     </tr>
-                                     
+                     	<th>Last Name</th>
+                     	<td id="txt_lname"></td>
+                     </tr>                 
+                     
                      <tr>
-                     <th>Last Name</th>
-                     <td id="txt_lname"></td>
-                     </tr>
-                                         
-                     <tr>
-                     <th>Email ID</th>
-                     <td id="txt_email"></td>
-                     </tr>
-                                         
-                     <tr>
-                     <th>Country</th>
-                     <td id="txt_country"></td>
+                     	<th>Email ID</th>
+                     	<td id="txt_email"></td>
                      </tr>
                                          
                      <tr>
-                     <th>City</th>
-                     <td id="txt_city"></td>
+                     	<th>Country</th>
+                     	<td id="txt_country"></td>
+                     </tr>
+                                         
+                     <tr>
+                     	<th>City</th>
+                     	<td id="txt_city"></td>
                      </tr>
                      
                      <tr>
-                     <th>Street</th>
-                     <td id="txt_street"></td>
+                     	<th>Street</th>
+                     	<td id="txt_street"></td>
                      </tr>
                      
                      <tr>
-                     <th>Postal code</th>
-                     <td id="txt_postalcode"></td>
+                     	<th>Postal code</th>
+                     	<td id="txt_postalcode"></td>
                      </tr>
                                          
-                     </table>            
-            	</div>
+                </table>            
+        	</div>
+        </div>
+        <div class="col-lg-8">
+        	<div class="modal-header"> 
+           		<h4 class="modal-title">
+             		<i class="glyphicon glyphicon-signal"></i> 
+             		Statistics
+             	</h4> 
+         	</div> 
+			<div id="simchart" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
         </div>
     </div>
+    
 </div>
+<script>
+$(function () {
+    Highcharts.chart('simchart', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Browser market shares January, 2015 to May, 2015'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Microsoft Internet Explorer',
+                y: 56.33
+            }, {
+                name: 'Chrome',
+                y: 24.03,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Firefox',
+                y: 10.38
+            }, {
+                name: 'Safari',
+                y: 4.77
+            }, {
+                name: 'Opera',
+                y: 0.91
+            }, {
+                name: 'Proprietary or Undetectable',
+                y: 0.2
+            }]
+        }]
+    });
+});
+</script>
