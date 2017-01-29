@@ -4,13 +4,7 @@
     <list default="true" id="ad19544d-aea6-48b8-b240-f70c27549886" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/controllers/sims.js" afterPath="$PROJECT_DIR$/app/api/controllers/sims.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/controllers/users.js" afterPath="$PROJECT_DIR$/app/api/controllers/users.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/models/sims.js" afterPath="$PROJECT_DIR$/app/api/models/sims.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/models/users.js" afterPath="$PROJECT_DIR$/app/api/models/users.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/routes/index.js" afterPath="$PROJECT_DIR$/app/api/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/dataTables/dataTables.checkboxes.min.js" afterPath="$PROJECT_DIR$/app/js/dataTables/dataTables.checkboxes.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/dataTables/dataTables.checkboxes.css" afterPath="$PROJECT_DIR$/app/styles/dataTables/dataTables.checkboxes.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dashboard.html" afterPath="$PROJECT_DIR$/app/views/dashboard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/overview.html" afterPath="$PROJECT_DIR$/app/views/overview.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,8 +26,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/api/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
+            <state relative-caret-position="459">
+              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -42,11 +36,12 @@
       <file leaf-file-name="overview.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/overview.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
-              <caret line="113" column="157" lean-forward="false" selection-start-line="113" selection-start-column="157" selection-end-line="113" selection-end-column="157" />
+            <state relative-caret-position="183">
+              <caret line="92" column="98" lean-forward="false" selection-start-line="92" selection-start-column="98" selection-end-line="92" selection-end-column="98" />
               <folding>
                 <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-                <marker date="1485713032666" expanded="true" signature="12973:12995" ph="..." />
+                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#1;n#!!top" expanded="true" />
+                <marker date="1485714394119" expanded="true" signature="13072:13094" ph="..." />
               </folding>
             </state>
           </provider>
@@ -66,8 +61,15 @@
         <entry file="file://$PROJECT_DIR$/app/views/dashboard.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="450">
-              <caret line="63" column="8" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="62" />
-              <folding />
+              <caret line="64" column="8" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="62" />
+              <folding>
+                <marker date="1485713161427" expanded="true" signature="1997:2853" ph="..." />
+                <marker date="1485713161427" expanded="true" signature="2032:2842" ph="{...}" />
+                <marker date="1485713161427" expanded="true" signature="2095:2834" ph="{...}" />
+                <marker date="1485713161427" expanded="true" signature="2116:2822" ph="{&quot;url&quot;: 'http://localhost:3000/user'...}" />
+                <marker date="1485713161427" expanded="true" signature="2343:2673" ph="{...}" />
+                <marker date="1485713161427" expanded="true" signature="2728:2807" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,8 +107,8 @@
       <file leaf-file-name="sims.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/api/controllers/sims.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+            <state relative-caret-position="680">
+              <caret line="49" column="69" lean-forward="false" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -183,8 +185,8 @@
         <option value="$PROJECT_DIR$/app/api/models/users.js" />
         <option value="$PROJECT_DIR$/app/api/controllers/users.js" />
         <option value="$PROJECT_DIR$/app/views/dashboard.html" />
-        <option value="$PROJECT_DIR$/app/api/routes/index.js" />
         <option value="$PROJECT_DIR$/app/api/controllers/sims.js" />
+        <option value="$PROJECT_DIR$/app/api/routes/index.js" />
         <option value="$PROJECT_DIR$/app/views/overview.html" />
       </list>
     </option>
@@ -537,12 +539,12 @@
       <updated>1485198610969</updated>
       <workItem from="1485198612526" duration="37684000" />
       <workItem from="1485613597054" duration="25643000" />
-      <workItem from="1485698177039" duration="13139000" />
+      <workItem from="1485698177039" duration="14509000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76466000" />
+    <option name="totallyTimeSpent" value="77836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2552" y="120" width="1936" height="1056" extended-state="6" />
@@ -600,7 +602,8 @@
           <caret line="244" column="22" lean-forward="false" selection-start-line="244" selection-start-column="22" selection-end-line="244" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <marker date="1485713032666" expanded="true" signature="12973:12995" ph="..." />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#1;n#!!top" expanded="true" />
+            <marker date="1485714394119" expanded="true" signature="13072:13094" ph="..." />
           </folding>
         </state>
       </provider>
@@ -879,8 +882,15 @@
     <entry file="file://$PROJECT_DIR$/app/views/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="63" column="8" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="62" />
-          <folding />
+          <caret line="64" column="8" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="62" />
+          <folding>
+            <marker date="1485713161427" expanded="true" signature="1997:2853" ph="..." />
+            <marker date="1485713161427" expanded="true" signature="2032:2842" ph="{...}" />
+            <marker date="1485713161427" expanded="true" signature="2095:2834" ph="{...}" />
+            <marker date="1485713161427" expanded="true" signature="2116:2822" ph="{&quot;url&quot;: 'http://localhost:3000/user'...}" />
+            <marker date="1485713161427" expanded="true" signature="2343:2673" ph="{...}" />
+            <marker date="1485713161427" expanded="true" signature="2728:2807" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -888,14 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/api/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -916,14 +918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/api/controllers/sims.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/api/controllers/session.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -932,13 +926,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/api/controllers/sims.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="49" column="69" lean-forward="false" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/api/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/overview.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="113" column="157" lean-forward="false" selection-start-line="113" selection-start-column="157" selection-end-line="113" selection-end-column="157" />
+        <state relative-caret-position="183">
+          <caret line="92" column="98" lean-forward="false" selection-start-line="92" selection-start-column="98" selection-end-line="92" selection-end-column="98" />
           <folding>
             <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <marker date="1485713032666" expanded="true" signature="12973:12995" ph="..." />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#1;n#!!top" expanded="true" />
+            <marker date="1485714394119" expanded="true" signature="13072:13094" ph="..." />
           </folding>
         </state>
       </provider>

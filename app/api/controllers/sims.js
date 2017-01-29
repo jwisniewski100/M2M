@@ -11,14 +11,32 @@ module.exports.orderSIM = function(req, res)
 {
     console.log("ADDING NEW SIM");
     console.log(req.body);
-    var sim = new Sim({
-        activated: Date.now(),
-        service: req.body.sim_type,
-        state: "Inactive",
-    });
-    sim.save(function (err, sim) {
-        if (err)
-            return console.error(err);
+    for(i = 0; i < req.body.quantity; i++ ) {
+        var sim = new Sim({
+            activated: Date.now(),
+            service: req.body.sim_type,
+            state: "INACTIVE",
+        });
+            sim.save(function (err, sim) {
+                if (err)
+                    return console.error(err);
+            });
+    }
+}
+
+/* Activate SIM */
+module.exports.activateSIM = function(req, res)
+{
+    console.log("ACTIVATING SIM");
+    console.log(req.body);
+    var numbers = req.body.currentIMSIInput.split(",");
+    numbers.forEach(function(number) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "ACTIVE"}, function (err, result) {
+            if (err) {
+                console.log("ERROR WHILE ACTIVATING SIM: " + err);
+                return;
+            }
+        });
     });
 }
 
@@ -29,7 +47,7 @@ module.exports.terminateSIM = function(req, res)
     console.log(req.body);
     var numbers = req.body.currentIMSIInput.split(",");
     numbers.forEach(function(number) {
-        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "Inactive"}, function (err, result) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "INACTIVE"}, function (err, result) {
             if (err) {
                 console.log("ERROR WHILE TERMINATING SIM: " + err);
                 return;
