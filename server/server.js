@@ -2,8 +2,9 @@ var express = require("express");
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     autoIncrement = require('mongoose-auto-increment');
-var bodyParser = require('body-parser');
+var cors = require('cors');
 
+var bodyParser = require('body-parser');
 var server = express();
 var hostname = 'localhost';
 var port = 3000;
@@ -11,7 +12,7 @@ var port = 3000;
 //var users = require('./routes/users');
 //var users = require('../app/api/routes/users');
 //var sims = require('../app/api/routes/sims');
-
+server.use(cors());
 server.use(express.static(__dirname + '/../client'));
 server.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true

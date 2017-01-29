@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ad19544d-aea6-48b8-b240-f70c27549886" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/controllers/sims.js" afterPath="$PROJECT_DIR$/app/api/controllers/sims.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/routes/index.js" afterPath="$PROJECT_DIR$/app/api/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/overview.html" afterPath="$PROJECT_DIR$/app/views/overview.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.js" afterPath="$PROJECT_DIR$/server/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,14 +25,14 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/api/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="425">
+              <caret line="25" column="38" lean-forward="false" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="overview.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="overview.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/overview.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="183">
@@ -114,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+            <state relative-caret-position="629">
+              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -177,7 +176,6 @@
         <option value="$PROJECT_DIR$/app/views/register.html" />
         <option value="$PROJECT_DIR$/config/passport.js" />
         <option value="$PROJECT_DIR$/app/api/models/counters.js" />
-        <option value="$PROJECT_DIR$/server/server.js" />
         <option value="$PROJECT_DIR$/config/strategies/local.js" />
         <option value="$PROJECT_DIR$/app/register.html" />
         <option value="$PROJECT_DIR$/app/api/models/session.js" />
@@ -186,8 +184,9 @@
         <option value="$PROJECT_DIR$/app/api/controllers/users.js" />
         <option value="$PROJECT_DIR$/app/views/dashboard.html" />
         <option value="$PROJECT_DIR$/app/api/controllers/sims.js" />
-        <option value="$PROJECT_DIR$/app/api/routes/index.js" />
         <option value="$PROJECT_DIR$/app/views/overview.html" />
+        <option value="$PROJECT_DIR$/app/api/routes/index.js" />
+        <option value="$PROJECT_DIR$/server/server.js" />
       </list>
     </option>
   </component>
@@ -539,12 +538,12 @@
       <updated>1485198610969</updated>
       <workItem from="1485198612526" duration="37684000" />
       <workItem from="1485613597054" duration="25643000" />
-      <workItem from="1485698177039" duration="14509000" />
+      <workItem from="1485698177039" duration="15356000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77836000" />
+    <option name="totallyTimeSpent" value="78683000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2552" y="120" width="1936" height="1056" extended-state="6" />
@@ -894,14 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
@@ -934,14 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/api/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/overview.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -951,6 +934,22 @@
             <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#form#1;n#!!top" expanded="true" />
             <marker date="1485714394119" expanded="true" signature="13072:13094" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/api/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="38" lean-forward="false" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -3,6 +3,7 @@
   "version": "1.8.0",
   "description": "M2M_Menagemen",
   "dependencies": {
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "grunt": "^0.4.5",
     "grunt-express-server": "^0.5.3",
