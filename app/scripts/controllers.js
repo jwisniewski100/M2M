@@ -4,7 +4,7 @@
 	function MainCtrl($scope, $document, $cookies) {
 
 	    //this.userName = 'Example user';
-	    this.helloText = 'Welcome in M2M Menagement';
+	    this.helloText = 'Welcome in M2M Management';
 
 
 
