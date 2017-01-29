@@ -4,8 +4,8 @@
 	'ngCookies',        
 	'ui.router',                    // Routing
     'ui.bootstrap',                // Bootstrap
-    'oc.lazyLoad'                  // ocLazyLoad
-
+    'oc.lazyLoad',                  // ocLazyLoad
+    'chart.js'
     ]);
 
 
