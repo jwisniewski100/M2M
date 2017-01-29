@@ -5,7 +5,7 @@ var util = require('util')
 module.exports.addNewProfile = function(req, res) {
     console.log("ADDING NEW PROFILE");
     var profile = new Profile({
-        name: req.body.spName,
+        _id: req.body.spName,
         data_limit: req.body.spDataLimit,
         sms_limit: req.body.spSMSLimit,
         lte_enable: req.body.spLTE,

@@ -21,6 +21,10 @@
                         <th>Activated</th>
                         <th>Service</th>
                         <th>State</th>
+                        <th>Data Limit</th>
+                        <th>SMS Limit</th>
+                        <th>LTE Enable</th>
+
                     </tr>
                     </thead>
                     <tfoot>
@@ -31,6 +35,9 @@
                         <th>Activated</th>
                         <th>Service</th>
                         <th>State</th>
+                        <th>Data Limit</th>
+                        <th>SMS Limit</th>
+                        <th>LTE Enable</th>
                     </tr>
                     </tfoot>
                 </table>
@@ -226,14 +233,18 @@
 
         $.post("http://localhost:3000/get_profiles", function (data) {
             $.each(data, function (i, word) {
-                console.log(word.name)
-                $("[name='CSPSelect']").append("<option>" + word.name + "</option>");
+                console.log(word._id)
+                $("[name='CSPSelect']").append("<option>" + word._id + "</option>");
             });
         });
-
+        var simple_checkbox = function ( data, type, full, meta ) {
+            var is_checked = data == true ? "checked" : "";
+            return '<input type="checkbox" checked onclick="return false;" onkeydown="return false; class="checkbox" ' +
+                is_checked + ' />';
+        }
         var table = $('#escalation').DataTable({
             ajax: {
-                url: 'http://localhost:3000/sims',
+                url: 'http://localhost:3000/sims_profiles',
                 type: 'GET',
                 dataSrc: ""
             },
@@ -248,12 +259,15 @@
             },
             order: [[1, 'asc']],
             'columns': [
-                { "data": null, "defaultContent": "<input type='checkbox' class='ajax-edit' data-toggle='modal' style='vertical-align: middle'></input>" },
-                {"data": "IMSI"},
-                {"data": "MSISDN"},
-                {"data": "activated"},
-                {"data": "service"},
-                {"data": "state"},
+                { "data": null, "defaultContent": "<input name='selectionCheckbox' type='checkbox' class='ajax-edit' data-toggle='modal' style='vertical-align: middle'></input>" },
+                {"data": "IMSI", "defaultContent": null},
+                {"data": "MSISDN", "defaultContent": null},
+                {"data": "activated", "defaultContent": null},
+                {"data": "service.0._id", "defaultContent": null},
+                {"data": "state", "defaultContent": null},
+                {"data": "service.0.data_limit", "defaultContent": null},
+                {"data": "service.0.sms_limit", "defaultContent": null},
+                {"data": "service.0.lte_enable","render": simple_checkbox }
             ],
         });
 
@@ -274,13 +288,15 @@
                 );
             });
         });
+
+
     });
 </script>
 
 
 <script>
     var counterChecked = 0;
-    $('#escalation').on('change', 'input[type="checkbox"]', function() {
+    $('#escalation').on('change', 'input[name="selectionCheckbox"]', function() {
         this.checked ? counterChecked++ : counterChecked--;
         counterChecked > 0 ? $('#btnAC').prop("disabled", false): $('#btnAC').prop("disabled", true);
         counterChecked > 0 ? $('#btnTE').prop("disabled", false): $('#btnTE').prop("disabled", true);
@@ -299,11 +315,11 @@
         var n = 1;
         var txt = ' ';
         for (var x=0;x<200;x+=1){
-            if($("tr td input").eq(x).prop('checked')){
+            if($('input[name="selectionCheckbox"]').eq(x).prop('checked')){
                 txt += $("tr td").eq(n).text();
                 txt += ", ";
             }
-            n+=6;
+            n+=9;
         }
         $('div[name=currentIMSI]').append(" "+txt+" ");
         if(" "+txt+" " != "") {

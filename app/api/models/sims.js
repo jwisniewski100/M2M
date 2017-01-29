@@ -2,18 +2,20 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     autoIncrement = require('mongoose-auto-increment');
 var Schema = mongoose.Schema;
+require('./service_profile.js');
+
 
 var simSchema = new Schema({
     checkbox_id: Number,
     IMSI: String,
     MSISDN: String,
     activated: Date,
-    service: String,
+    service: [{type: String, ref: 'service_profile'}],
     state: String,
     user: {
         type: Schema.ObjectId,
         ref: 'users'
-    }
+    },
 });
 
 simSchema.plugin(autoIncrement.plugin, {
