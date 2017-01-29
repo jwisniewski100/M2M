@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('users');
-
+var session = require('./session.js');
+var util = require('util')
 
 /*var sendJSONresponse = function(res, status, content) {
     res.status(status);
@@ -50,10 +51,17 @@ module.exports.addUser = function(req, res)
 module.exports.getByUserName = function(req, res)
 {
     console.log("GETTING USER BY NAME");
-    console.log(req.body);
-    console.log(res.body);
-    var user = User.findOne({company_name: req.body.username});
-    //console.log(user);
+    //console.log(res.body);
+    User.findOne({company_name: req.body.company_name}, function(err, user) {
+        if (err) {
+            return err;
+        }
+        console.log("user:" + user.password);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSON.stringify(user));
+        res.end();
+    });
+
 }
 
 module.exports.login = function(req, res)
@@ -71,6 +79,7 @@ module.exports.login = function(req, res)
         if(user.password == req.body.password)
         {
             console.log('Correct password.');
+            session.setCurrentUser({ currentUserId :user.company_name})
             return res.redirect('http://localhost:9000/#/index/dashboard');
         }
         else

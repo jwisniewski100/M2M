@@ -12,8 +12,6 @@ module.exports.orderSIM = function(req, res)
     console.log("ADDING NEW SIM");
     console.log(req.body);
     var sim = new Sim({
-        /*IMSI: getNextSequence('IMSI'),
-        MSISDN: getNextSequence('MSISDN'),*/
         activated: Date.now(),
         service: req.body.sim_type,
         state: "Active",
@@ -63,7 +61,6 @@ server.get('/sims', function(req, res){
 });
 
 server.post('/insert', function(req, res, next){
-    console.log('DUPPAAAAAAAAAAAAAAAAAA!!!!!!!!!!!!!!!!!!!!!');
     var user = new User({
         email : req.body.email,
         company_name : req.body.company_name,

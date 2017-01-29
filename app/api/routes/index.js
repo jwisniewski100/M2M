@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var ctrlUsers = require('../controllers/users');
 var ctrlSims = require('../controllers/sims');
+ctrlSession = require('../controllers/session');
 
 //Users
 router.post('/login', ctrlUsers.login);
@@ -20,4 +21,6 @@ router.post('/sims', ctrlSims.orderSIM);
 //router.put('/sims/:simsid', ctrlSims.simsUpdateOne);
 //router.delete('/sims/:simsid', ctrlSims.simsDeleteOne);
 
+router.post('/session', ctrlSession.setCurrentUser);
+router.get('/session', ctrlSession.getCurrentUser);
 module.exports = router;

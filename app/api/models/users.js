@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+const crypto = require('crypto');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -7,7 +8,7 @@ var userSchema = new Schema({
     city: String,
     street: String,
     email: String,
-    password: String
+    password: String,
 });
 
 mongoose.model('users', userSchema);
