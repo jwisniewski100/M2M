@@ -15,10 +15,11 @@ router.post('/users', ctrlUsers.addUser);
 //router.delete('/users/:userid', ctrlUsers.usersDeleteOne);
 
 // SIMs
-//router.get('/sims', ctrlSims.simsListById);
+router.get('/sims', ctrlSims.getAllSIMs);
 router.post('/sims', ctrlSims.orderSIM);
 router.post('/terminate_sim', ctrlSims.terminateSIM);
 router.post('/activate_sim', ctrlSims.activateSIM);
+router.post('/change_service_profile', ctrlSims.changeProfile);
 //router.get('/sims/:simsid', ctrlSims.simsGetByIdOne);
 //router.put('/sims/:simsid', ctrlSims.simsUpdateOne);
 //router.delete('/sims/:simsid', ctrlSims.simsDeleteOne);
@@ -28,5 +29,6 @@ router.get('/session', ctrlSession.getCurrentUser);
 
 //service profiles
 router.post('/add_service_profile', ctrlProfile.addNewProfile );
+router.post('/get_profiles', ctrlProfile.getAllProfiles );
 
 module.exports = router;

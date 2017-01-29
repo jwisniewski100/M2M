@@ -40,18 +40,6 @@ require('../app/api/models/service_profile');
 var routes = require('../app/api/routes/index');
 server.use('/', routes);
 
-/*server.get('/users', function(req, res){
-    mongoose.model('users').find(function(err, users){
-        res.send(users);
-    });
-});*/
-
-server.get('/sims', function(req, res){
-    mongoose.model('sims').find(function(err, sims){
-        res.send(sims);
-    });
-});
-
 // Import routes.js
 //require('./routes')(server);
 // Export module

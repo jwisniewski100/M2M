@@ -15,3 +15,11 @@ module.exports.addNewProfile = function(req, res) {
             return console.error(err);
     });
 }
+
+module.exports.getAllProfiles = function(req, res) {
+    console.log("GETTING ALL PROFILES");
+    Profile.find(function (err, profile) {
+        res.send(profile);
+    });
+}
+

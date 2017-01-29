@@ -14,7 +14,7 @@ module.exports.orderSIM = function(req, res)
     for(i = 0; i < req.body.quantity; i++ ) {
         var sim = new Sim({
             activated: Date.now(),
-            service: req.body.sim_type,
+            service: null,
             state: "INACTIVE",
         });
             sim.save(function (err, sim) {
@@ -22,6 +22,14 @@ module.exports.orderSIM = function(req, res)
                     return console.error(err);
             });
     }
+}
+
+/* Get all SIMs */
+module.exports.getAllSIMs = function(req, res) {
+    console.log("GETTING ALL SIM CARDS");
+        Sim.find(function (err, sims) {
+            res.send(sims);
+        });
 }
 
 /* Activate SIM */
@@ -56,55 +64,17 @@ module.exports.terminateSIM = function(req, res)
     });
 }
 
-
-
-/* Get all SIMs */
-/*module.exports.getAllSIMs = function(req, res) {
-    console.log("Getting all SIMs");
-    var simList = Sim.find({});
-    console.log(simList)
-};*/
-
-/*var buildLocationList = function(req, res, results, stats) {
-    var locations = [];
-    results.forEach(function(doc) {
-        locations.push({
-            distance: theEarth.getDistanceFromRads(doc.dis),
-            name: doc.obj.name,
-            address: doc.obj.address,
-            rating: doc.obj.rating,
-            facilities: doc.obj.facilities,
-            _id: doc.obj._id
+/* Change Service Profile */
+module.exports.changeProfile = function(req, res) {
+    console.log("CHANGE PROFILE");
+    var profile = req.body.CSPSelect;
+    var numbers = req.body.currentIMSIInput.split(",");
+    numbers.forEach(function(number) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {service: profile}, function (err, result) {
+            if (err) {
+                console.log("ERROR WHILE TERMINATING SIM: " + err);
+                return;
+            }
         });
     });
-    return locations;
-};*/
-/*module.exports.getAllUsers = function (req, res) {
-    mongoose.model('users').find(function(err, users){
-        res.send(users);
-    });
 }
-server.get('/users', function(req, res){
-
-});
-
-server.get('/sims', function(req, res){
-    mongoose.model('sims').find(function(err, sims){
-        res.send(sims);
-    });
-});
-
-server.post('/insert', function(req, res, next){
-    var user = new User({
-        email : req.body.email,
-        company_name : req.body.company_name,
-    });
-    user.save(function (err) {
-        if (err) {
-            return err;
-        }
-        else {
-            console.log("User added");
-        }
-    });
-});*/
