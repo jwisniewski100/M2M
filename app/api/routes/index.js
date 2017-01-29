@@ -16,7 +16,7 @@ router.post('/users', ctrlUsers.addUser);
 // SIMs
 //router.get('/sims', ctrlSims.simsListById);
 router.post('/sims', ctrlSims.orderSIM);
-//router.get('/sims', ctrlSims.getAllSIMs);
+router.post('/terminate_sim', ctrlSims.terminateSIM);
 //router.get('/sims/:simsid', ctrlSims.simsGetByIdOne);
 //router.put('/sims/:simsid', ctrlSims.simsUpdateOne);
 //router.delete('/sims/:simsid', ctrlSims.simsDeleteOne);

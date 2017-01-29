@@ -15,7 +15,7 @@
                 <table id="escalation" class="display" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th></th>
+                        <th>Checkbox</th>
                         <th>IMSI</th>
                         <th>MSISDN</th>
                         <th>Activated</th>
@@ -25,7 +25,7 @@
                     </thead>
                     <tfoot>
                     <tr>
-                        <th></th>
+                        <th>Checkbox</th>
                         <th>IMSI</th>
                         <th>MSISDN</th>
                         <th>Activated</th>
@@ -81,7 +81,7 @@
 </form>
 
 
-<div class="modal fade" id="AC" tabindex="-1" role="dialog">
+<form name="simActivateForm" class="modal fade" id="AC" tabindex="-1" role="dialog" action="http://localhost:3000/activate_sim" method="post" onsubmit="$('#AC').modal('hide')">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -108,10 +108,10 @@
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
     </div>
-</div>
+</form>
 
 
-<div class="modal fade" id="TE" tabindex="-1" role="dialog">
+<form name="simTerminationForm" class="modal fade" id="TE" tabindex="-1" role="dialog" action="http://localhost:3000/terminate_sim" method="post" onsubmit="$('#TE').modal('hide')">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -119,7 +119,8 @@
                 <h4 class="modal-title" id="TElabel">Terminate</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">IMSI</div>
-                    <div class="panel-body" name="currentIMSI"> </div>
+                    <div class="panel-body" name="currentIMSI" type="text"> </div>
+                    <input class="panel-body" name="currentIMSIInput" type="text" hidden> </input>
                 </div>
             </div>
             <div class="modal-body">
@@ -128,10 +129,10 @@
         </div>
         <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Confirm</button>
+                <button type="submit" class="btn btn-primary" id="TerminateButton">Confirm</button>
         </div>
     </div>
-</div>
+</form>
 
 
 <div class="modal fade" id="SP" tabindex="-1" role="dialog">
@@ -263,41 +264,48 @@
         });
     } );*/
 
-    $(document).ready(function (){
+    $(document).ready(function () {
+        $.get("http://localhost:3000/sims", function (data) {
+            var sims = $.map(data, function (el) {
+                return el;
+            })
+            console.log(sims)
+        });
+
         var table = $('#escalation').DataTable({
             ajax: {
                 url: 'http://localhost:3000/sims',
                 type: 'GET',
-                dataSrc: function ( json ) {
-                    for ( var i=0, ien=json.data.length ; i<ien ; i++ ) {
-                        json.data[i][0] = '<a href="/message/'+json.data[i][0]+'>View message</a>';
-                    }
-                    return json.data;
-                }
+                dataSrc: ""
             },
-            'columnDefs': [
-                {
-                    'targets': 0,
-                    'checkboxes': {
-                        'selectRow': true
-                    }
-                }
+            columnDefs: [{
+                orderable: false,
+                className: 'select-checkbox',
+                targets: 0
+            }],
+            select: {
+                style: 'os',
+                selector: 'td:first-child'
+            },
+            order: [[1, 'asc']],
+            'columns': [
+                { "data": null, "defaultContent": "<input type='checkbox' class='ajax-edit' data-toggle='modal' style='vertical-align: middle'></input>" },
+                {"data": "IMSI"},
+                {"data": "MSISDN"},
+                {"data": "activated"},
+                {"data": "service"},
+                {"data": "state"},
             ],
-            'select': {
-                'style': 'multi'
-            },
-            'order': [[1, 'asc']]
         });
 
-
         // Handle form submission event
-        $('#frm-example').on('submit', function(e){
+        $('#escalation').on('submit', function (e) {
             var form = this;
 
             var rows_selected = table.column(0).checkboxes.selected();
 
             // Iterate over all selected checkboxes
-            $.each(rows_selected, function(index, rowId){
+            $.each(rows_selected, function (index, rowId) {
                 // Create a hidden element
                 $(form).append(
                     $('<input>')
@@ -308,10 +316,6 @@
             });
         });
     });
-
-
-
-
 </script>
 
 
@@ -340,9 +344,12 @@
                 txt += $("tr td").eq(n).text();
                 txt += ", ";
             }
-            n+=7;
+            n+=6;
         }
         $('div[name=currentIMSI]').append(" "+txt+" ");
+        if(" "+txt+" " != "") {
+            $('input[name=currentIMSIInput]').val(" " + txt + " ");
+        }
     });
 </script>
 

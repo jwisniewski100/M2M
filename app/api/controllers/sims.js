@@ -14,11 +14,27 @@ module.exports.orderSIM = function(req, res)
     var sim = new Sim({
         activated: Date.now(),
         service: req.body.sim_type,
-        state: "Active",
+        state: "Inactive",
     });
     sim.save(function (err, sim) {
         if (err)
             return console.error(err);
+    });
+}
+
+/* Terminate SIM */
+module.exports.terminateSIM = function(req, res)
+{
+    console.log("TERMINATING SIM");
+    console.log(req.body);
+    var numbers = req.body.currentIMSIInput.split(",");
+    numbers.forEach(function(number) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "Inactive"}, function (err, result) {
+            if (err) {
+                console.log("ERROR WHILE TERMINATING SIM: " + err);
+                return;
+            }
+        });
     });
 }
 

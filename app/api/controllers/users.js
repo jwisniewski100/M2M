@@ -42,6 +42,7 @@ module.exports.addUser = function(req, res)
         email: req.body.email,
         password: req.body.password,
     });
+    session.setCurrentUser({ currentUserId :req.body.company_name});
     user.save(function (err, user) {
         if (err)
             return console.error(err);
@@ -79,7 +80,7 @@ module.exports.login = function(req, res)
         if(user.password == req.body.password)
         {
             console.log('Correct password.');
-            session.setCurrentUser({ currentUserId :user.company_name})
+            session.setCurrentUser({ currentUserId :user.company_name});
             return res.redirect('http://localhost:9000/#/index/dashboard');
         }
         else

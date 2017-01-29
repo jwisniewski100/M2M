@@ -64,7 +64,6 @@
         $.get("http://localhost:3000/session", function(data){
             $.ajax({
                 url: 'http://localhost:3000/user',
-                // dataType: "jsonp",
                 data: {"company_name": data.currentUserId},
                 type: 'POST',
                 jsonpCallback: 'callback',
@@ -74,7 +73,7 @@
                     $('#country').html(data.country);
                     $('#city').html(data.city);
                     $('#street').html(data.street);
-                    console.log('Success: ')
+                    console.log('Success')
                 },
                 error: function (xhr, status, error) {
                     console.log('Error: ' + error.message);

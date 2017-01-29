@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 var Schema = mongoose.Schema;
 
 var simSchema = new Schema({
+    checkbox_id: Number,
     IMSI: String,
     MSISDN: String,
     activated: Date,
@@ -26,6 +27,13 @@ simSchema.plugin(autoIncrement.plugin, {
     model: 'SIM',
     field: 'MSISDN',
     startAt: 43003001000000,
+    incrementBy: 1
+});
+
+simSchema.plugin(autoIncrement.plugin, {
+    model: 'SIM',
+    field: 'checkbox_id',
+    startAt: 0,
     incrementBy: 1
 });
 
