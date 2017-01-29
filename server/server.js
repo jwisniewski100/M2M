@@ -35,6 +35,7 @@ autoIncrement.initialize(connection);
 require('../app/api/models/users');
 require('../app/api/models/sims');
 require('../app/api/models/session');
+require('../app/api/models/service_profile');
 
 var routes = require('../app/api/routes/index');
 server.use('/', routes);

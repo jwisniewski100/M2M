@@ -136,7 +136,7 @@
 </form>
 
 
-<div class="modal fade" id="SP" tabindex="-1" role="dialog">
+<form name="spAddForm" class="modal fade" id="SP" tabindex="-1" role="dialog" action="http://localhost:3000/add_service_profile" method="post" onsubmit="$('#SE').modal('hide')">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -144,16 +144,10 @@
                 <h4 class="modal-title" id="SPlabel">Create SP</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group"><label>Name</label> <input type="name" placeholder="Name" class="form-control" required></div>
-                <div class="form-group"><label>Data limit</label> <input type="number" placeholder="Data limit" class="form-control" required></div>
-                <div class="form-group"><label>SMS limit</label> <input type="number" placeholder="SMS limit" class="form-control" required></div>
-                <label>LTE enabled: <input type="checkbox"></label><br/>
-            <!--    <div class="form-check">
-                    <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
-                    LTE enabled:
-                    </label>
-                    </div>          -->
+                <div class="form-group"><label>Name</label> <input name = "spName" type="text" placeholder="Name" class="form-control" required></div>
+                <div class="form-group"><label>Data limit</label> <input name="spDataLimit" type="number" placeholder="Data limit" class="form-control" required></div>
+                <div class="form-group"><label>SMS limit</label> <input name="spSMSLimit" type="number" placeholder="SMS limit" class="form-control" required></div>
+                <label>LTE enabled: <input name="spLTE" type="checkbox"></label><br/>
             </div>
         </div>
         <div class="modal-footer">
@@ -161,7 +155,7 @@
                 <button type="submit" class="btn btn-primary">Save</button>
         </div>
     </div>
-</div>
+</form>
 
 
 

@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 var ctrlUsers = require('../controllers/users');
 var ctrlSims = require('../controllers/sims');
-ctrlSession = require('../controllers/session');
+var ctrlSession = require('../controllers/session');
+var ctrlProfile = require('../controllers/service_profile');
 
 //Users
 router.post('/login', ctrlUsers.login);
@@ -24,4 +25,8 @@ router.post('/activate_sim', ctrlSims.activateSIM);
 
 router.post('/session', ctrlSession.setCurrentUser);
 router.get('/session', ctrlSession.getCurrentUser);
+
+//service profiles
+router.post('/add_service_profile', ctrlProfile.addNewProfile );
+
 module.exports = router;
