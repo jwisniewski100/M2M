@@ -39,9 +39,8 @@
 
 	this.setNewUrl(getCookie('url'));
 
-	$scope.chartlabels = ['ClassicMini', 'ClassicMicro', 'A1Clasic', 'A1d23ultra', 'NanoInter' ];
-
-	$scope.chartdata = [5, 7, 0, 9, 3];
+//	$scope.chartlabels = ['ClassicMini', 'ClassicMicro', 'A1Clasic', 'A1d23ultra', 'NanoInter' ];
+//	$scope.chartdata = [5, 7, 0, 9, 3];
 	
 	
 	};

@@ -103,3 +103,26 @@ module.exports.changeProfile = function(req, res) {
     res.redirect('http://localhost:9000/#/index/overview');
     res.send();
 }
+
+/* GET NUMBER SIMS WITH SERVICE PROFILES */ 
+module.exports.getNumberSIMsWithSP = function(req, res)
+{
+    console.log("GETTING NUMBER SIMS BY SERVICE PROFILE");
+    Sim.aggregate([
+    	{ $group: { 
+    		_id: { service: '$service' },
+    		count: { $sum: 1 }
+    	}}, 
+    	{$project: {  
+    			_id: 0,
+    			service: '$_id.service',
+    	        count: 1
+    	}}]
+    	,function(err, result){
+    		res.send(result);
+            }
+    ); 
+//    res.contentType('json');
+  //  res.redirect('http://localhost:9000/#/index/overview');
+  //  res.send();
+}
