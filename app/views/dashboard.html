@@ -82,13 +82,13 @@
         });
     });
 </script>
-
+<!--  
 <script> 
 	$(document).ready(function() {
 		var labels = [], data=[]; 
 		$.get("http://localhost:3000/number_sims_with_profiles", function(data) {
 			 $.each(data, function (i, word) {
-				 $('#chart_id').htmlchart-data.append(word.count);
+				 $('#chartdata').html(word.count);
 				 //labels.push(parseString(word.service)); 
 				 //$('#chartdata').append(word.count);      
 	            	console.log(word.service +" " + word.count)
@@ -98,4 +98,4 @@
 		}); 
 	});
 	
-</script>
+</script> -->

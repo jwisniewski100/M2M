@@ -38,10 +38,32 @@
 	}
 
 	this.setNewUrl(getCookie('url'));
-
+	
+	var labels = [], data=[];
 //	$scope.chartlabels = ['ClassicMini', 'ClassicMicro', 'A1Clasic', 'A1d23ultra', 'NanoInter' ];
 //	$scope.chartdata = [5, 7, 0, 9, 3];
+	$(document).ready(function() {
+		 
+		$.get("http://localhost:3000/number_sims_with_profiles", function(data) {
+			 $.each(data, function (i, word) {
+				if(word.service == null ){
+					labels[i] = "brak";
+				}
+				else
+				{
+					labels[i] = word.service; 
+				}
+				data[i] = word.count; 
+				console.log(labels[i] +" " + data[i] + " " + i)
+	         });
+			 
+		}); 
+	});
 	
+	console.log(labels[0]);
+	
+	$scope.chartlabels = labels; //Dlaczego tutaj tych danych nie ma? 
+	$scope.chartdata = data
 	
 	};
 
