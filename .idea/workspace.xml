@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ad19544d-aea6-48b8-b240-f70c27549886" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api/controllers/triggers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/api/models/triggers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/controllers/sims.js" afterPath="$PROJECT_DIR$/app/api/controllers/sims.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/controllers/transactions.js" afterPath="$PROJECT_DIR$/app/api/controllers/transactions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/models/sims.js" afterPath="$PROJECT_DIR$/app/api/models/sims.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/routes/index.js" afterPath="$PROJECT_DIR$/app/api/routes/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/triggers.html" afterPath="$PROJECT_DIR$/app/views/triggers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.js" afterPath="$PROJECT_DIR$/server/server.js" />
-    </list>
+    <list default="true" id="ad19544d-aea6-48b8-b240-f70c27549886" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -562,12 +552,12 @@
       <updated>1485198610969</updated>
       <workItem from="1485198612526" duration="37684000" />
       <workItem from="1485613597054" duration="25643000" />
-      <workItem from="1485698177039" duration="51713000" />
+      <workItem from="1485698177039" duration="52038000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115040000" />
+    <option name="totallyTimeSpent" value="115365000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2552" y="120" width="1936" height="1056" extended-state="6" />
