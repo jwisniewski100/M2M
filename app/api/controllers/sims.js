@@ -20,11 +20,12 @@ module.exports.orderSIM = function(req, res)
             sim.save(function (err, sim) {
                 if (err)
                     return console.error(err);
-                res.contentType('json');
-                res.redirect('http://localhost:9000/#/index/overview');
-                res.send();
+
             });
     }
+    res.contentType('json');
+    res.redirect('http://localhost:9000/#/index/overview');
+    res.send();
 }
 
 /* Get all SIMs */
@@ -62,7 +63,7 @@ module.exports.terminateSIM = function(req, res)
     console.log(req.body);
     var numbers = req.body.currentIMSIInput.split(",");
     numbers.forEach(function(number) {
-        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "INACTIVE"}, function (err, res) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "TERMINATED"}, function (err, res) {
             if (err) {
                 console.log("ERROR WHILE TERMINATING SIM: " + err);
                 return
