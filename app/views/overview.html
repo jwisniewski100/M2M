@@ -104,7 +104,7 @@
                 <div class="form-group">
                     <label>Service profile</label>
                     <div class="input-group">
-                        <select data-placeholder="Service profile" class="chosen-select" style="width:350px;" tabindex="2">
+                        <select name="CSPSelect" data-placeholder="Service profile" class="chosen-select" style="width:350px;" tabindex="2">
                             <option value="">Service profile</option> 
                         </select>
                     </div>
@@ -143,7 +143,7 @@
 </form>
 
 
-<form name="spAddForm" class="modal fade" id="SP" tabindex="-1" role="dialog" action="http://localhost:3000/add_service_profile" method="post" onsubmit="$('#SE').modal('hide')">
+<form name="spAddForm" class="modal fade" id="SP" tabindex="-1" role="dialog" action="http://localhost:3000/add_service_profile" method="post" onsubmit="$('#SP').modal('hide')">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -198,7 +198,7 @@
 
 
 
-<div class="modal fade" id="SMS" tabindex="-1" role="dialog">
+<form class="modal fade" id="SMS" tabindex="-1" role="dialog" action="http://localhost:3000/change_service_profile" method="post" onsubmit="$('#SMS').modal('hide')">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -218,7 +218,7 @@
             <button type="button" class="btn btn-primary">Send</button>
         </div>
     </div>
-</div>
+</form>
 
 
 
@@ -239,7 +239,7 @@
         });
         var simple_checkbox = function ( data, type, full, meta ) {
             var is_checked = data == true ? "checked" : "";
-            return '<input type="checkbox" checked onclick="return false;" onkeydown="return false; class="checkbox" ' +
+            return '<input type="checkbox" onclick="return false;" onkeydown="return false; class="checkbox" ' +
                 is_checked + ' />';
         }
         var table = $('#escalation').DataTable({
@@ -260,13 +260,13 @@
             order: [[1, 'asc']],
             'columns': [
                 { "data": null, "defaultContent": "<input name='selectionCheckbox' type='checkbox' class='ajax-edit' data-toggle='modal' style='vertical-align: middle'></input>" },
-                {"data": "IMSI", "defaultContent": null},
-                {"data": "MSISDN", "defaultContent": null},
-                {"data": "activated", "defaultContent": null},
-                {"data": "service.0._id", "defaultContent": null},
-                {"data": "state", "defaultContent": null},
-                {"data": "service.0.data_limit", "defaultContent": null},
-                {"data": "service.0.sms_limit", "defaultContent": null},
+                {"data": "IMSI", "defaultContent": " "},
+                {"data": "MSISDN", "defaultContent": " "},
+                {"data": "activated", "defaultContent": " "},
+                {"data": "service.0._id", "defaultContent": " "},
+                {"data": "state", "defaultContent": " "},
+                {"data": "service.0.data_limit", "defaultContent": " "},
+                {"data": "service.0.sms_limit", "defaultContent": " "},
                 {"data": "service.0.lte_enable","render": simple_checkbox }
             ],
         });

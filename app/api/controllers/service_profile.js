@@ -14,6 +14,9 @@ module.exports.addNewProfile = function(req, res) {
         if (err)
             return console.error(err);
     });
+    res.contentType('json');
+    res.redirect('http://localhost:9000/#/index/overview');
+    res.send();
 }
 
 module.exports.getAllProfiles = function(req, res) {

@@ -20,6 +20,9 @@ module.exports.orderSIM = function(req, res)
             sim.save(function (err, sim) {
                 if (err)
                     return console.error(err);
+                res.contentType('json');
+                res.redirect('http://localhost:9000/#/index/overview');
+                res.send();
             });
     }
 }
@@ -37,15 +40,19 @@ module.exports.activateSIM = function(req, res)
 {
     console.log("ACTIVATING SIM");
     console.log(req.body);
+    var profile = req.body.CSPSelect;
     var numbers = req.body.currentIMSIInput.split(",");
     numbers.forEach(function(number) {
-        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "ACTIVE"}, function (err, result) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "ACTIVE", service: profile}, function (err, res) {
             if (err) {
                 console.log("ERROR WHILE ACTIVATING SIM: " + err);
                 return;
             }
         });
     });
+    res.contentType('json');
+    res.redirect('http://localhost:9000/#/index/overview');
+    res.send();
 }
 
 /* Terminate SIM */
@@ -55,13 +62,16 @@ module.exports.terminateSIM = function(req, res)
     console.log(req.body);
     var numbers = req.body.currentIMSIInput.split(",");
     numbers.forEach(function(number) {
-        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "INACTIVE"}, function (err, result) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "INACTIVE"}, function (err, res) {
             if (err) {
                 console.log("ERROR WHILE TERMINATING SIM: " + err);
-                return;
+                return
             }
         });
     });
+    res.contentType('json');
+    res.redirect('http://localhost:9000/#/index/overview');
+    res.send();
 }
 
 /* GET SIMS WITH PROFILES */
@@ -88,4 +98,7 @@ module.exports.changeProfile = function(req, res) {
             }
         });
     });
+    res.contentType('json');
+    res.redirect('http://localhost:9000/#/index/overview');
+    res.send();
 }
