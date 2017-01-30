@@ -113,3 +113,16 @@ module.exports.changeProfile = function(req, res) {
     res.redirect('http://localhost:9000/#/index/overview');
     res.send();
 }
+
+/* Sending SMS */
+module.exports.sendSMS = function(req, res) {
+    console.log("Sending SMS");
+    var numbers = req.body.currentIMSIInput.split(",");
+    numbers.forEach(function(number) {
+        if(number.trim() != "")
+                transactions.addTransaction({ transaction_type: "Send SMS", imsi: number.trim()});
+        });
+    res.contentType('json');
+    res.redirect('http://localhost:9000/#/index/overview');
+    res.send();
+}

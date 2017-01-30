@@ -22,6 +22,7 @@ router.post('/terminate_sim', ctrlSims.terminateSIM);
 router.post('/activate_sim', ctrlSims.activateSIM);
 router.post('/change_service_profile', ctrlSims.changeProfile);
 router.get('/sims_profiles', ctrlSims.getSIMsWithProfiles);
+router.post('/send_sms', ctrlSims.sendSMS);
 //router.get('/sims/:simsid', ctrlSims.simsGetByIdOne);
 //router.put('/sims/:simsid', ctrlSims.simsUpdateOne);
 //router.delete('/sims/:simsid', ctrlSims.simsDeleteOne);

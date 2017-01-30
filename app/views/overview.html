@@ -198,7 +198,7 @@
 
 
 
-<form class="modal fade" id="SMS" tabindex="-1" role="dialog" action="http://localhost:3000/change_service_profile" method="post" onsubmit="$('#SMS').modal('hide')">
+<form name="sendSMSForm" class="modal fade" id="SMS" tabindex="-1" role="dialog" action="http://localhost:3000/send_sms" method="post" onsubmit="$('#SMS').modal('hide')">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -207,15 +207,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">IMSI</div>
                     <div class="panel-body" name="currentIMSI"> </div>
+                    <input class="panel-body" name="currentIMSIInput" type="text" hidden> </input>
                 </div>
             </div>
             <div class="modal-body">
-                <textarea class="form-control" style="min-width: 100%" placeholder="Message" id="SMSarea"></textarea>
+                <textarea name="SMSBody" type="text" class="form-control" style="min-width: 100%" placeholder="Message" id="SMSarea"></textarea>
             </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Send</button>
+            <button type="submit" class="btn btn-primary">Send</button>
         </div>
     </div>
 </form>
