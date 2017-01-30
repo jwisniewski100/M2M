@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Sim = mongoose.model('sims');
+var transactions = require('./transactions.js');
 
 var sendJSONresponse = function(res, status, content) {
     res.status(status);
@@ -20,8 +21,11 @@ module.exports.orderSIM = function(req, res)
             sim.save(function (err, sim) {
                 if (err)
                     return console.error(err);
-
             });
+        Sim.findOne(function (err, sim) {
+            transactions.addTransaction({ transaction_type: "SIM Order", imsi: sim.IMSI });
+        });
+
     }
     res.contentType('json');
     res.redirect('http://localhost:9000/#/index/overview');
@@ -44,11 +48,13 @@ module.exports.activateSIM = function(req, res)
     var profile = req.body.CSPSelect;
     var numbers = req.body.currentIMSIInput.split(",");
     numbers.forEach(function(number) {
-        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "ACTIVE", service: profile}, function (err, res) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "ACTIVE", service: profile}, function (err, result) {
             if (err) {
                 console.log("ERROR WHILE ACTIVATING SIM: " + err);
                 return;
             }
+            if(number.trim() != "")
+                transactions.addTransaction({ transaction_type: "Activate SIM", imsi: number.trim()});
         });
     });
     res.contentType('json');
@@ -63,11 +69,13 @@ module.exports.terminateSIM = function(req, res)
     console.log(req.body);
     var numbers = req.body.currentIMSIInput.split(",");
     numbers.forEach(function(number) {
-        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "TERMINATED"}, function (err, res) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "TERMINATED"}, function (err, result) {
             if (err) {
                 console.log("ERROR WHILE TERMINATING SIM: " + err);
                 return
             }
+            if(number.trim() != "")
+                transactions.addTransaction({ transaction_type: "Terminate SIM", imsi: number.trim()});
         });
     });
     res.contentType('json');
@@ -97,6 +105,8 @@ module.exports.changeProfile = function(req, res) {
                 console.log("ERROR WHILE TERMINATING SIM: " + err);
                 return;
             }
+            if(number.trim() != "")
+                transactions.addTransaction({ transaction_type: "SP Change", imsi: number.trim()});
         });
     });
     res.contentType('json');

@@ -9,9 +9,6 @@ var server = express();
 var hostname = 'localhost';
 var port = 3000;
 
-//var users = require('./routes/users');
-//var users = require('../app/api/routes/users');
-//var sims = require('../app/api/routes/sims');
 server.use(cors());
 server.use(express.static(__dirname + '/../client'));
 server.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -36,6 +33,7 @@ require('../app/api/models/users');
 require('../app/api/models/sims');
 require('../app/api/models/session');
 require('../app/api/models/service_profile');
+require('../app/api/models/transactions');
 
 var routes = require('../app/api/routes/index');
 server.use('/', routes);

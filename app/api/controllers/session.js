@@ -24,3 +24,9 @@ module.exports.getCurrentUser = function(req, res)
         res.end();
     });
 }
+
+module.exports.getUser = function(){
+    var session = Session.findOne({_id: 0});
+    console.log("OMG: " + session );
+    return session.currentUserId;
+}

@@ -4,6 +4,7 @@ var ctrlUsers = require('../controllers/users');
 var ctrlSims = require('../controllers/sims');
 var ctrlSession = require('../controllers/session');
 var ctrlProfile = require('../controllers/service_profile');
+var ctrlTransactions = require('../controllers/transactions');
 
 //Users
 router.post('/login', ctrlUsers.login);
@@ -31,5 +32,8 @@ router.get('/session', ctrlSession.getCurrentUser);
 //service profiles
 router.post('/add_service_profile', ctrlProfile.addNewProfile );
 router.post('/get_profiles', ctrlProfile.getAllProfiles );
+
+//transactions
+router.get('/transactions', ctrlTransactions.getAllTransactions);
 
 module.exports = router;
