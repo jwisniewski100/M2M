@@ -34,6 +34,7 @@ require('../app/api/models/sims');
 require('../app/api/models/session');
 require('../app/api/models/service_profile');
 require('../app/api/models/transactions');
+require('../app/api/models/triggers');
 
 var routes = require('../app/api/routes/index');
 server.use('/', routes);

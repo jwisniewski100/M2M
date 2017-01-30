@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Sim = mongoose.model('sims');
 var transactions = require('./transactions.js');
+var Session = mongoose.model('session');
 
 var sendJSONresponse = function(res, status, content) {
     res.status(status);
@@ -10,26 +11,29 @@ var sendJSONresponse = function(res, status, content) {
 /* Add new SIM */
 module.exports.orderSIM = function(req, res)
 {
-    console.log("ADDING NEW SIM");
-    console.log(req.body);
-    for(i = 0; i < req.body.quantity; i++ ) {
-        var sim = new Sim({
-            activated: Date.now(),
-            service: null,
-            state: "INACTIVE",
-        });
+    Session.findOne({_id: 0}, function (err, session) {
+        console.log("ADDING NEW SIM");
+        console.log(req.body);
+        for (i = 0; i < req.body.quantity; i++) {
+            var sim = new Sim({
+                activated: Date.now(),
+                service: null,
+                state: "INACTIVE",
+                userid: session.currentUserId
+            });
             sim.save(function (err, sim) {
                 if (err)
                     return console.error(err);
             });
-        Sim.findOne(function (err, sim) {
-            transactions.addTransaction({ transaction_type: "SIM Order", imsi: sim.IMSI });
-        });
+            Sim.findOne(function (err, sim) {
+                transactions.addTransaction({transaction_type: "SIM Order", imsi: sim.IMSI});
+            });
 
-    }
-    res.contentType('json');
-    res.redirect('http://localhost:9000/#/index/overview');
-    res.send();
+        }
+        res.contentType('json');
+        res.redirect('http://localhost:9000/#/index/overview');
+        res.send();
+    });
 }
 
 /* Get all SIMs */
@@ -38,6 +42,16 @@ module.exports.getAllSIMs = function(req, res) {
         Sim.find(function (err, sims) {
             res.send(sims);
         });
+}
+
+/* Get all SIMs of current user */
+module.exports.getAllSIMs = function(req, res) {
+    Session.findOne({_id: 0}, function (err, session) {
+        console.log("GETTING ALL SIM CARDS OF CURRENT USER");
+        Sim.find({username: session.currentUserId},function (err, sims) {
+            res.send(sims);
+        });
+    });
 }
 
 /* Activate SIM */
