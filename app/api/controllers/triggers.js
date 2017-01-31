@@ -29,10 +29,11 @@ module.exports.addTrigger = function(req, res) {
             trigger.save(function (err, trigger) {
                 if (err)
                     return console.error(err);
+                transactions.addTransaction({transaction_type: "Trigger Created", imsi: trigger.id});
             });
-            Trigger.findOne(function (err, trigger) {
-                transactions.addTransaction({transaction_type: "Trigger Created", imsi: 0});
-            });
+            /*Trigger.findOne(function (err, trigger) {
+
+            });*/
 
             res.contentType('json');
             res.redirect('http://localhost:9000/#/index/triggers');
