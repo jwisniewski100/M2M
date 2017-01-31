@@ -129,7 +129,6 @@ module.exports.changeProfile = function(req, res) {
     res.send();
 }
 
-<<<<<<< HEAD
 /* GET NUMBER SIMS WITH SERVICE PROFILES */ 
 module.exports.getNumberSIMsWithSP = function(req, res)
 {
@@ -148,11 +147,11 @@ module.exports.getNumberSIMsWithSP = function(req, res)
     		
     		res.send(result);
             }
-    ); 
+    )};  
 //    res.contentType('json');
   //  res.redirect('http://localhost:9000/#/index/overview');
   //  res.send();
-=======
+
 /* Sending SMS */
 module.exports.sendSMS = function(req, res) {
     console.log("Sending SMS");
@@ -164,5 +163,5 @@ module.exports.sendSMS = function(req, res) {
     res.contentType('json');
     res.redirect('http://localhost:9000/#/index/overview');
     res.send();
->>>>>>> branch 'master' of https://github.com/jwisniewski100/M2M
+
 }
