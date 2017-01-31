@@ -2,11 +2,6 @@ var mongoose = require('mongoose');
 var Transaction = mongoose.model('transactions');
 var Session = mongoose.model('session');
 
-var sendJSONresponse = function(res, status, content) {
-    res.status(status);
-    res.json(content);
-};
-
 /* Add new transaction */
 module.exports.addTransaction = function(req, res)
 {
@@ -44,8 +39,10 @@ function getEndDate(date) {
 /* Get all transactions */
 module.exports.getAllTransactions = function(req, res) {
     console.log("GETTING ALL TRANSACTIONS");
-    Transaction.find(function (err, transactions) {
-        res.send(transactions);
+    Session.findOne({_id: 0}, function (err, session) {
+        Transaction.find({created_by: session.currentUserId}, function (err, transactions) {
+            res.send(transactions);
+        });
     });
 }
 

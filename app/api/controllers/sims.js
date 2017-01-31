@@ -3,11 +3,6 @@ var Sim = mongoose.model('sims');
 var transactions = require('./transactions.js');
 var Session = mongoose.model('session');
 
-var sendJSONresponse = function(res, status, content) {
-    res.status(status);
-    res.json(content);
-};
-
 /* Add new SIM */
 module.exports.orderSIM = function(req, res)
 {
@@ -100,13 +95,15 @@ module.exports.terminateSIM = function(req, res)
 
 /* GET SIMS WITH PROFILES */
 module.exports.getSIMsWithProfiles = function(req, res) {
-    console.log("GETTING SIMS AND PROFILES");
-    Sim.find()
-        .populate('service') // multiple path names in one requires mongoose >= 3.6
-        .exec(function(err, simsWithProfiles) {
-            // handle err
-            res.send(simsWithProfiles);
-        });
+    Session.findOne({_id: 0}, function (err, session) {
+        console.log("GETTING SIMS AND PROFILES");
+        Sim.find({userid: session.currentUserId})
+            .populate('service') // multiple path names in one requires mongoose >= 3.6
+            .exec(function (err, simsWithProfiles) {
+                // handle err
+                res.send(simsWithProfiles);
+            });
+    });
 }
 
 /* Change Service Profile */

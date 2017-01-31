@@ -4,11 +4,6 @@ var Session = mongoose.model('session');
 var Sim = mongoose.model('sims');
 var transactions = require('./transactions.js');
 
-var sendJSONresponse = function(res, status, content) {
-    res.status(status);
-    res.json(content);
-};
-
 /* Add new trigger */
 module.exports.addTrigger = function(req, res) {
     Session.findOne({_id: 0}, function (err, session) {
@@ -64,7 +59,7 @@ module.exports.deactivateTrigger = function(req, res)
                 return
             }
             if(number.trim() != "")
-                transactions.addTransaction({ transaction_type: "Deactivate Trigger"});
+                transactions.addTransaction({ transaction_type: "Deactivate Trigger", imsi: number.trim()});
         });
     });
     res.contentType('json');
