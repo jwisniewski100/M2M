@@ -19,7 +19,7 @@ module.exports.addTrigger = function(req, res) {
                 type: type,
                 creation_date: Date.now(),
                 sim_count: Object.keys(sims).length,
-                state: "ACTIVE",
+                state: "INACTIVE",
                 owner: session.currentUserId
             });
             trigger.save(function (err, trigger) {

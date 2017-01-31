@@ -45,14 +45,9 @@
                 </table>            
         	</div>
         	<div class="panel-heading">Sims in SP</div>
-         		<table id="table-responsive" class="table table-bordered">
-         		 	<thead>
-    					<tr>
-      					<th>Service profile</th>
- 				    	<th>Sim quatity</th>
-    					</tr>
-  					</thead>
-         		</table>  	
+				<!--<table class="table table-bordered" >-->
+
+
         	</div>
         <div class="col-lg-8">
         	<div class="modal-header"> 
@@ -60,10 +55,19 @@
              		<i class="glyphicon glyphicon-signal"></i> 
              		Statistics
              	</h4> 
-         	</div> 
-         	<div class="panel-heading">Sim cards<div>
-         	<canvas id="myChart" class="chart-bar" chart-data="chartdata" chart-labels="chartlabels"></canvas>
-      	</div>
+         	</div> <br>
+         	<!--<div class="panel-heading">Sim cards</div>
+         	<canvas id="myChart" class="chart-bar" chart-data="chartdata" chart-labels="chartlabels"></canvas>-->
+			<table id="table-responsive" class="table table-bordered">
+				<thead>
+				<tr>
+					<th>Service profile</th>
+					<th>Sim quatity</th>
+				</tr>
+				</thead>
+			</table>
+
+		</div>
     </div>
 </div>
 
@@ -150,7 +154,7 @@ var ctx = document.getElementById("myChart").getContext("2d");
 ctx.canvas.width = 1000;
 ctx.canvas.height = 800;
 
-//var myChart = new Chart(ctx).Bar(data); //Funkcja bar nie dzia³a prawodobnie z³a wersja biblioteki angular-min.js 
+//var myChart = new Chart(ctx).Bar(data); //Funkcja bar nie dziaï¿½a prawodobnie zï¿½a wersja biblioteki angular-min.js 
 
 </script>
 -->
