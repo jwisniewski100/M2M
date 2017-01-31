@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad19544d-aea6-48b8-b240-f70c27549886" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/controllers/sims.js" afterPath="$PROJECT_DIR$/app/api/controllers/sims.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/controllers/triggers.js" afterPath="$PROJECT_DIR$/app/api/controllers/triggers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/transactions.html" afterPath="$PROJECT_DIR$/app/views/transactions.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/triggers.html" afterPath="$PROJECT_DIR$/app/views/triggers.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,18 +30,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="triggers.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="triggers.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/triggers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1934">
-              <caret line="251" column="21" lean-forward="false" selection-start-line="251" selection-start-column="21" selection-end-line="251" selection-end-column="21" />
+            <state relative-caret-position="287">
+              <caret line="212" column="35" lean-forward="false" selection-start-line="212" selection-start-column="35" selection-end-line="212" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
                 <element signature="n#style#1;n#textarea#0;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-                <marker date="1485819390501" expanded="true" signature="7937:7959" ph="..." />
+                <marker date="1485821723629" expanded="true" signature="7924:7946" ph="..." />
               </folding>
             </state>
           </provider>
@@ -117,7 +115,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="triggers.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="triggers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/api/controllers/triggers.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="595">
@@ -169,6 +167,7 @@
       <find>create</find>
       <find>imsiButton</find>
       <find>imsibutton</find>
+      <find>items</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -201,10 +200,10 @@
         <option value="$PROJECT_DIR$/app/api/models/triggers.js" />
         <option value="$PROJECT_DIR$/app/api/routes/index.js" />
         <option value="$PROJECT_DIR$/app/api/models/sims.js" />
-        <option value="$PROJECT_DIR$/app/views/triggers.html" />
         <option value="$PROJECT_DIR$/app/api/controllers/sims.js" />
         <option value="$PROJECT_DIR$/app/views/transactions.html" />
         <option value="$PROJECT_DIR$/app/api/controllers/triggers.js" />
+        <option value="$PROJECT_DIR$/app/views/triggers.html" />
       </list>
     </option>
   </component>
@@ -556,12 +555,12 @@
       <updated>1485198610969</updated>
       <workItem from="1485198612526" duration="37684000" />
       <workItem from="1485613597054" duration="25643000" />
-      <workItem from="1485698177039" duration="53480000" />
+      <workItem from="1485698177039" duration="54002000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116807000" />
+    <option name="totallyTimeSpent" value="117329000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2552" y="120" width="1936" height="1056" extended-state="6" />
@@ -937,21 +936,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/triggers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1934">
-          <caret line="251" column="21" lean-forward="false" selection-start-line="251" selection-start-column="21" selection-end-line="251" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <element signature="n#style#1;n#textarea#0;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
-            <marker date="1485819390501" expanded="true" signature="7937:7959" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/overview.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3079">
@@ -981,6 +965,21 @@
         <state relative-caret-position="595">
           <caret line="35" column="17" lean-forward="false" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/triggers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="212" column="35" lean-forward="false" selection-start-line="212" selection-start-column="35" selection-end-line="212" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#4;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#textarea#0;n#div#1;n#div#0;n#div#0;n#form#0;n#!!top" expanded="true" />
+            <marker date="1485821723629" expanded="true" signature="7924:7946" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
