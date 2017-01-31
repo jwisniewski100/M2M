@@ -53,7 +53,7 @@
              	</h4> 
          	</div> 
          	<div class="panel-heading">Sim cards<div>
-         	<canvas id="chart_id" class="chart-bar" chart-data="chartdata" chart-labels="chartlabels"></canvas>
+         	<canvas id="myChart" class="chart-bar" chart-data="chartdata" chart-labels="chartlabels"></canvas>
         </div>
     </div>
 
@@ -82,20 +82,67 @@
         });
     });
 </script>
-<!--  
+  
 <script> 
-	$(document).ready(function() {
-		var labels = [], data=[]; 
+		var data = []; 
 		$.get("http://localhost:3000/number_sims_with_profiles", function(data) {
 			 $.each(data, function (i, word) {
-				 $('#chartdata').html(word.count);
-				 //labels.push(parseString(word.service)); 
-				 //$('#chartdata').append(word.count);      
-	            	console.log(word.service +" " + word.count)
-	              //  $("[name='CSPSelect']").append("<option>" + word._id + "</option>");
-	         });
-			 
+				 var scope = angular.element($("#outer")).scope();
+				 if(word.service == null ){
+						//labels[i] = "brak";
+					 //$("[chart-labels='chartlabels']").append("brak")
+					 scope.chartlabels.append("brak"); 
+					}
+					else
+					{
+						//$("[chart-labels='chartlabels']").append(word.service); 
+						//labels[i] = word.service;
+						scope.chartlabels.append(word.service);
+					}
+				 	//$("[cchart-data='chartdata']").append(word.count); 
+					//data[i] = word.count; 
+					console.log(labels[i] +" " + data[i] + " " + i)
+	         });	 
 		}); 
-	});
-	
-</script> -->
+		console.log(data[1]);
+</script> 
+
+ <!--  
+<script>
+var test = [];
+
+$.getJSON("http://localhost:3000/number_sims_with_profiles", function (json) {
+    test.push(json[i].timestamp);
+
+});
+var data = {
+    labels: test,
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            highlightStroke: "rgba(220,220,220,1)",
+            data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,0.8)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            highlightStroke: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 86, 27, 90]
+        }
+    ]
+};
+
+
+var ctx = document.getElementById("myChart").getContext("2d");
+ctx.canvas.width = 1000;
+ctx.canvas.height = 800;
+
+//var myChart = new Chart(ctx).Bar(data); //Funkcja bar nie dzia³a prawodobnie z³a wersja biblioteki angular-min.js 
+
+</script>
+-->

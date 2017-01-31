@@ -39,32 +39,35 @@
 
 	this.setNewUrl(getCookie('url'));
 	
-	var labels = [], data=[];
-//	$scope.chartlabels = ['ClassicMini', 'ClassicMicro', 'A1Clasic', 'A1d23ultra', 'NanoInter' ];
-//	$scope.chartdata = [5, 7, 0, 9, 3];
-	$(document).ready(function() {
-		 
-		$.get("http://localhost:3000/number_sims_with_profiles", function(data) {
-			 $.each(data, function (i, word) {
-				if(word.service == null ){
-					labels[i] = "brak";
-				}
+/*
+	$scope.chartlabels = [];//['ClassicMini', 'ClassicMicro', 'A1Clasic', 'A1d23ultra', 'NanoInter' ];
+	$scope.chartdata = []; //[5, 7, 0, 9, 3];
+
+	$scope.data = [];
+
+    $scope.init = function () {
+        $http.get("http://localhost:3000/number_sims_with_profiles").success(function (data) {
+        	$.each(data, function (i, word) {
+				 if(word.service == null ){
+						//labels[i] = "brak";
+					 //$("[chart-labels='chartlabels']").append("brak")
+					 $scope.chartlabels.append("brak"); 
+				 }
 				else
 				{
-					labels[i] = word.service; 
+						//$("[chart-labels='chartlabels']").append(word.service); 
+					$scope.chartlabels.append(word.service);
 				}
-				data[i] = word.count; 
-				console.log(labels[i] +" " + data[i] + " " + i)
-	         });
-			 
-		}); 
-	});
+				 	//$("[cchart-data='chartdata']").append(word.count); 
+					//data[i] = word.count; 
+				 console.log($scope.chartlabels[i] +" " + $scope.chartdata[i] + " " + i)
+				 $scope.chartdata.append(word.count);
+        	});	 
+        });
+    };
 	
-	console.log(labels[0]);
-	
-	$scope.chartlabels = labels; //Dlaczego tutaj tych danych nie ma? 
-	$scope.chartdata = data
-	
+    console.log($scope.chartdata[1]); //Dlaczego tutaj wypisuje "undefined" ?  
+*/    
 	};
 
     $('#Order').submit(function(e) {

@@ -129,6 +129,7 @@ module.exports.changeProfile = function(req, res) {
     res.send();
 }
 
+
 /* GET NUMBER SIMS WITH SERVICE PROFILES */ 
 module.exports.getNumberSIMsWithSP = function(req, res)
 {
@@ -144,13 +145,10 @@ module.exports.getNumberSIMsWithSP = function(req, res)
     	        count: 1
     	}}]
     	,function(err, result){
-    		
-    		res.send(result);
-            }
-    )};  
-//    res.contentType('json');
-  //  res.redirect('http://localhost:9000/#/index/overview');
-  //  res.send();
+    		res.contentType('json');
+    		res.send(result.toArray);
+       	}
+)};  
 
 /* Sending SMS */
 module.exports.sendSMS = function(req, res) {
@@ -163,5 +161,4 @@ module.exports.sendSMS = function(req, res) {
     res.contentType('json');
     res.redirect('http://localhost:9000/#/index/overview');
     res.send();
-
-}
+};
