@@ -20,6 +20,7 @@ module.exports.addTrigger = function(req, res) {
                 creation_date: Date.now(),
                 sim_count: Object.keys(sims).length,
                 state: "ACTIVE",
+                owner: session.currentUserId
             });
             trigger.save(function (err, trigger) {
                 if (err)
@@ -40,9 +41,11 @@ module.exports.addTrigger = function(req, res) {
 
 /* Get all triggers */
 module.exports.getAllTriggers = function(req, res) {
-    console.log("GETTING ALL TRIGGERS");
-    Trigger.find(function (err, trigger) {
-        res.send(trigger);
+    Session.findOne({_id: 0}, function (err, session) {
+        console.log("GETTING ALL TRIGGERS");
+        Trigger.find({owner: session.currentUserId}, function (err, trigger) {
+            res.send(trigger);
+        });
     });
 }
 
@@ -60,6 +63,27 @@ module.exports.deactivateTrigger = function(req, res)
             }
             if(number.trim() != "")
                 transactions.addTransaction({ transaction_type: "Deactivate Trigger", imsi: number.trim()});
+        });
+    });
+    res.contentType('json');
+    res.redirect('http://localhost:9000/#/index/triggers');
+    res.send();
+}
+
+/* Activate Trigger */
+module.exports.activateTrigger = function(req, res)
+{
+    console.log("ACTIVATING TRIGGER");
+    console.log(req.body);
+    var numbers = req.body.currentIMSIInput.split(",");
+    numbers.forEach(function(number) {
+        Trigger.findOneAndUpdate({id: number.trim()}, {state: "ACTIVE"}, function (err, result) {
+            if (err) {
+                console.log("ERROR WHILE ACTIVATING TRIGGER: " + err);
+                return
+            }
+            if(number.trim() != "")
+                transactions.addTransaction({ transaction_type: "Activate Trigger", imsi: number.trim()});
         });
     });
     res.contentType('json');

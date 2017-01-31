@@ -43,4 +43,5 @@ router.get('/transactions', ctrlTransactions.getAllTransactions);
 router.post('/create_trigger', ctrlTriggers.addTrigger);
 router.get('/triggers', ctrlTriggers.getAllTriggers);
 router.post('/deactivate_triggers', ctrlTriggers.deactivateTrigger);
+router.post('/activate_triggers', ctrlTriggers.activateTrigger);
 module.exports = router;

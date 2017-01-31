@@ -41,6 +41,7 @@
 
             </div>
             <button type="button" name="imsiButton" class="btn btn-w-m btn-primary" id="btnCT" data-toggle="modal" data-target="#CT">Create Trigger</button>
+            <button type="button" name="imsiButton" class="btn btn-w-m btn-primary" id="btnAT" data-toggle="modal" data-target="#AT" disabled>Activate Trigger</button>
             <button type="button" name="imsiButton" class="btn btn-w-m btn-primary" id="btnDT" data-toggle="modal" data-target="#DT" disabled>Deactivate Trigger</button>
 
         </div>
@@ -119,6 +120,29 @@
                     <button type="submit" class="btn btn-primary">Confirm</button>
                 </div>
         </div>
+</form>
+
+<form class="modal fade" id="AT" tabindex="-1" role="dialog" action="http://localhost:3000/activate_triggers" method="post" onsubmit="$('#AT').modal('hide')">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="ATlabel">Activate</h4>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">IMSI</div>
+                <div class="panel-body" name="currentIMSI"> </div>
+                <input class="panel-body" name="currentIMSIInput" type="text" hidden> </input>
+            </div>
+            <div class="modal-body">
+                <div><p>Do you want to activate checked triggers?</p></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Confirm</button>
+        </div>
+    </div>
 </form>
 
 
@@ -206,6 +230,7 @@
         $('#escalation').on('change', 'input[type="checkbox"]', function() {
             this.checked ? counterChecked++ : counterChecked--;
             counterChecked > 0 ? $('#btnDT').prop("disabled", false): $('#btnDT').prop("disabled", true);
+            counterChecked > 0 ? $('#btnAT').prop("disabled", false): $('#btnAT').prop("disabled", true);
     });
 </script>
 

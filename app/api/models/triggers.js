@@ -9,7 +9,8 @@ var triggersSchema = new Schema({
     type: String,
     creation_date: Date,
     sim_count : Number,
-    state: String
+    state: String,
+    owner: String
 });
 
 triggersSchema.plugin(autoIncrement.plugin, {
