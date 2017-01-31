@@ -44,7 +44,16 @@
                                          
                 </table>            
         	</div>
-        </div>
+        	<div class="panel-heading">Sims in SP</div>
+         		<table id="table-responsive" class="table table-bordered">
+         		 	<thead>
+    					<tr>
+      					<th>Service profile</th>
+ 				    	<th>Sim quatity</th>
+    					</tr>
+  					</thead>
+         		</table>  	
+        	</div>
         <div class="col-lg-8">
         	<div class="modal-header"> 
            		<h4 class="modal-title">
@@ -54,9 +63,8 @@
          	</div> 
          	<div class="panel-heading">Sim cards<div>
          	<canvas id="myChart" class="chart-bar" chart-data="chartdata" chart-labels="chartlabels"></canvas>
-        </div>
+      	</div>
     </div>
-
 </div>
 
 <script>
@@ -91,17 +99,17 @@
 				 if(word.service == null ){
 						//labels[i] = "brak";
 					 //$("[chart-labels='chartlabels']").append("brak")
-					 scope.chartlabels.append("brak"); 
+					 //scope.chartlabels.append("brak"); 
 					}
 					else
 					{
 						//$("[chart-labels='chartlabels']").append(word.service); 
 						//labels[i] = word.service;
-						scope.chartlabels.append(word.service);
+						//scope.chartlabels.append(word.service);
 					}
 				 	//$("[cchart-data='chartdata']").append(word.count); 
 					//data[i] = word.count; 
-					console.log(labels[i] +" " + data[i] + " " + i)
+					//console.log(labels[i] +" " + data[i] + " " + i)
 	         });	 
 		}); 
 		console.log(data[1]);
@@ -146,3 +154,19 @@ ctx.canvas.height = 800;
 
 </script>
 -->
+
+<script>
+    var table = $('#table-responsive').DataTable({
+        ajax: {
+            url: 'http://localhost:3000/number_sims_with_profiles',
+            type: 'GET',
+            dataSrc: ""
+        },
+        'columns': [
+            {"data": "service", "defaultContent": " "},
+            {"data": "count", "defaultContent": " "},
+        ],
+    });
+
+
+</script>

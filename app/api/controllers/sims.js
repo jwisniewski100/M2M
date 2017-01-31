@@ -146,7 +146,7 @@ module.exports.getNumberSIMsWithSP = function(req, res)
     	}}]
     	,function(err, result){
     		res.contentType('json');
-    		res.send(result.toArray);
+    		res.send(result);
        	}
 )};  
 
