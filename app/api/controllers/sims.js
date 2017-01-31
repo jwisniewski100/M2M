@@ -24,10 +24,11 @@ module.exports.orderSIM = function(req, res)
             sim.save(function (err, sim) {
                 if (err)
                     return console.error(err);
+                Sim.findOne(function (err, sim) {
+                    transactions.addTransaction({transaction_type: "SIM Order", imsi: sim.IMSI});
+                });
             });
-            Sim.findOne(function (err, sim) {
-                transactions.addTransaction({transaction_type: "SIM Order", imsi: sim.IMSI});
-            });
+
 
         }
         res.contentType('json');

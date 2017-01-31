@@ -60,7 +60,7 @@
                     <div class="form-group">
                         <label class>Select type</label>
                         <div class="input-group">
-                            <select name="trigger_type" type="text" data-placeholder="Select type" class="chosen-select" style="width:350px;" tabindex="2" name="items">
+                            <select name="trigger_type" type="text" data-placeholder="Select type" class="chosen-select" style="width:350px;" tabindex="2">
                                 <option value="point">Point in time</option>
                                 <option value="time">Time past from first activity</option>
                                 <option value="threshold">Data threshold</option>
@@ -210,7 +210,7 @@
 </script>
 
 <script>
-        $("select[name=items]").change(function() {
+        $("select[name=trigger_type]").change(function() {
             if ($(this).val() == 'point') {
                 $("#custom").prop('type', 'datetime-local');
                 $("#custom").prop('placeholder', 'DD/MM/YYYY HH:MM');
