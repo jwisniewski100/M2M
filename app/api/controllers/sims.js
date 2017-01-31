@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var Sim = mongoose.model('sims');
+var transactions = require('./transactions.js');
+var Session = mongoose.model('session');
 
 var sendJSONresponse = function(res, status, content) {
     res.status(status);
@@ -9,23 +11,29 @@ var sendJSONresponse = function(res, status, content) {
 /* Add new SIM */
 module.exports.orderSIM = function(req, res)
 {
-    console.log("ADDING NEW SIM");
-    console.log(req.body);
-    for(i = 0; i < req.body.quantity; i++ ) {
-        var sim = new Sim({
-            activated: Date.now(),
-            service: null,
-            state: "INACTIVE",
-        });
+    Session.findOne({_id: 0}, function (err, session) {
+        console.log("ADDING NEW SIM");
+        console.log(req.body);
+        for (i = 0; i < req.body.quantity; i++) {
+            var sim = new Sim({
+                activated: Date.now(),
+                service: null,
+                state: "INACTIVE",
+                userid: session.currentUserId
+            });
             sim.save(function (err, sim) {
                 if (err)
                     return console.error(err);
-
             });
-    }
-    res.contentType('json');
-    res.redirect('http://localhost:9000/#/index/overview');
-    res.send();
+            Sim.findOne(function (err, sim) {
+                transactions.addTransaction({transaction_type: "SIM Order", imsi: sim.IMSI});
+            });
+
+        }
+        res.contentType('json');
+        res.redirect('http://localhost:9000/#/index/overview');
+        res.send();
+    });
 }
 
 /* Get all SIMs */
@@ -36,6 +44,16 @@ module.exports.getAllSIMs = function(req, res) {
         });
 }
 
+/* Get all SIMs of current user */
+module.exports.getAllSIMs = function(req, res) {
+    Session.findOne({_id: 0}, function (err, session) {
+        console.log("GETTING ALL SIM CARDS OF CURRENT USER");
+        Sim.find({username: session.currentUserId},function (err, sims) {
+            res.send(sims);
+        });
+    });
+}
+
 /* Activate SIM */
 module.exports.activateSIM = function(req, res)
 {
@@ -44,11 +62,13 @@ module.exports.activateSIM = function(req, res)
     var profile = req.body.CSPSelect;
     var numbers = req.body.currentIMSIInput.split(",");
     numbers.forEach(function(number) {
-        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "ACTIVE", service: profile}, function (err, res) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "ACTIVE", service: profile}, function (err, result) {
             if (err) {
                 console.log("ERROR WHILE ACTIVATING SIM: " + err);
                 return;
             }
+            if(number.trim() != "")
+                transactions.addTransaction({ transaction_type: "Activate SIM", imsi: number.trim()});
         });
     });
     res.contentType('json');
@@ -63,11 +83,13 @@ module.exports.terminateSIM = function(req, res)
     console.log(req.body);
     var numbers = req.body.currentIMSIInput.split(",");
     numbers.forEach(function(number) {
-        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "TERMINATED"}, function (err, res) {
+        Sim.findOneAndUpdate({IMSI: number.trim()}, {state: "TERMINATED"}, function (err, result) {
             if (err) {
                 console.log("ERROR WHILE TERMINATING SIM: " + err);
                 return
             }
+            if(number.trim() != "")
+                transactions.addTransaction({ transaction_type: "Terminate SIM", imsi: number.trim()});
         });
     });
     res.contentType('json');
@@ -97,6 +119,8 @@ module.exports.changeProfile = function(req, res) {
                 console.log("ERROR WHILE TERMINATING SIM: " + err);
                 return;
             }
+            if(number.trim() != "")
+                transactions.addTransaction({ transaction_type: "SP Change", imsi: number.trim()});
         });
     });
     res.contentType('json');
@@ -104,6 +128,7 @@ module.exports.changeProfile = function(req, res) {
     res.send();
 }
 
+<<<<<<< HEAD
 /* GET NUMBER SIMS WITH SERVICE PROFILES */ 
 module.exports.getNumberSIMsWithSP = function(req, res)
 {
@@ -126,4 +151,17 @@ module.exports.getNumberSIMsWithSP = function(req, res)
 //    res.contentType('json');
   //  res.redirect('http://localhost:9000/#/index/overview');
   //  res.send();
+=======
+/* Sending SMS */
+module.exports.sendSMS = function(req, res) {
+    console.log("Sending SMS");
+    var numbers = req.body.currentIMSIInput.split(",");
+    numbers.forEach(function(number) {
+        if(number.trim() != "")
+                transactions.addTransaction({ transaction_type: "Send SMS", imsi: number.trim()});
+        });
+    res.contentType('json');
+    res.redirect('http://localhost:9000/#/index/overview');
+    res.send();
+>>>>>>> branch 'master' of https://github.com/jwisniewski100/M2M
 }

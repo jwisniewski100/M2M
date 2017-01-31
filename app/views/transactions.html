@@ -9,11 +9,11 @@
             </div>
             <div class="ibox-content"><br>
                 <div class="table-responsive">
-                    <table id="escalation" datatable="" class="table table-striped table-hover dataTables-example ">
-                    <thead>
+                    <table id="escalation" class="display" cellspacing="0" width="100%">
+                        <thead>
                         <tr>
-
-                            <th>ID</th>
+                            <th>Checkbox</th>
+                            <th>IMSI</th>
                             <th>Type</th>
                             <th>Start Date</th>
                             <th>End Date</th>
@@ -21,25 +21,17 @@
                             <th>State</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tfoot>
                         <tr>
-                            <td>1</td>
-                            <td>Sim Activation</td>
-                            <td>2016-05-22 12:05:33</td>
-                            <td>2016-05-22 12:05:48</td>
-                            <td>DPD World</td>
-                            <td>Finished</td>
+                            <th>Checkbox</th>
+                            <th>IMSI</th>
+                            <th>Type</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Created By</th>
+                            <th>State</th>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Change SP</td>
-                            <td>2016-05-22 16:00:03</td>
-                            <td>2016-05-22 16:05:09</td>
-                            <td>DPD World</td>
-                            <td>Finished</td>
-                        </tr>
-                        </tbody>
-
+                        </tfoot>
                     </table>
 
                 </div>
@@ -68,12 +60,37 @@
 
 
 <script>
-   $(document).ready(function () {
-        $('#escalation').DataTable( {
-             "columnDefs": [
-            {className: "clickable-row", "targets": [1] }
-            ]        
-    })});
+    var simple_checkbox = function ( data, type, full, meta ) {
+        var is_checked = data == true ? "checked" : "";
+        return '<input type="checkbox" onclick="return false;" onkeydown="return false; class="checkbox" ' +
+            is_checked + ' />';
+    }
+    var table = $('#escalation').DataTable({
+        ajax: {
+            url: 'http://localhost:3000/transactions',
+            type: 'GET',
+            dataSrc: ""
+        },
+        columnDefs: [{
+            orderable: false,
+            className: 'select-checkbox',
+            targets: 0
+        }],
+        select: {
+            style: 'os',
+            selector: 'td:first-child'
+        },
+        order: [[1, 'asc']],
+        'columns': [
+            { "data": null, "defaultContent": "<input name='selectionCheckbox' type='checkbox' class='ajax-edit' data-toggle='modal' style='vertical-align: middle'></input>" },
+            {"data": "imsi", "defaultContent": " "},
+            {"data": "type", "defaultContent": " "},
+            {"data": "start_date", "defaultContent": " "},
+            {"data": "end_date", "defaultContent": " "},
+            {"data": "created_by", "defaultContent": " "},
+            {"data": "state", "defaultContent": " "},
+        ],
+    });
 </script>
 
 <script>

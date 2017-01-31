@@ -9,6 +9,7 @@ var simSchema = new Schema({
     checkbox_id: Number,
     IMSI: String,
     MSISDN: String,
+    userid: String,
     activated: Date,
     service: [{type: String, ref: 'service_profile'}],
     state: String,

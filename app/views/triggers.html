@@ -11,71 +11,43 @@
 
             <div class="ibox-content"><br>
                 <div class="table-responsive">
-                    <table id="escalation" datatable="" class="table table-striped table-hover dataTables-example ">
-                    <thead>
+                    <table id="escalation" class="display" cellspacing="0" width="100%">
+                        <thead>
                         <tr>
-                            <th>   </th>
+                            <th>Checkbox</th>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Type</th>
                             <th>Created</th>
-                            <th>Sim Count</th>
+                            <th>SIM Count</th>
                             <th>State</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tfoot>
                         <tr>
-                            <td><input icheck type="checkbox" ></td>
-                            <td>1</small></td>
-                            <td>Change SP for NEW</td>
-                            <td>Change SP</td>
-                            <td>2016-05-22 12:05:33</td>
-                            <td>1</td>
-                            <td>Active</td>
+                            <th>Checkbox</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Created</th>
+                            <th>SIM Count</th>
+                            <th>State</th>
                         </tr>
-                        <tr>
-                            <td><input icheck type="checkbox" ></td>
-                            <td>2</small></td>
-                            <td>Block Sim</td>
-                            <td>Change SP</td>
-                            <td>2016-10-02 08:12:39</td>
-                            <td>12</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td><input icheck type="checkbox" ></td>
-                            <td>3</small></td>
-                            <td>Voice enabled</td>
-                            <td>Change SP</td>
-                            <td>2016-12-12 08:00:00</td>
-                            <td>7</td>
-                            <td>Active</td>
-                        </tr>
-                        <tr>
-                            <td><input icheck type="checkbox" ></td>
-                            <td>4</small></td>
-                            <td>Block Sim</td>
-                            <td>Change SP</td>
-                            <td>2016-10-02 08:12:39</td>
-                            <td>2</td>
-                            <td>Active</td>
-                        </tr>
-                        </tbody>
-
+                        </tfoot>
                     </table>
 
 
                 </div>
 
             </div>
-            <button type="button" class="btn btn-w-m btn-primary" id="btnCT" data-toggle="modal" data-target="#CT">Create Trigger</button>
-            <button type="button" class="btn btn-w-m btn-primary" id="btnDT" data-toggle="modal" data-target="#DT" disabled>Delete Trigger</button>
+            <button type="button" name="imsiButton" class="btn btn-w-m btn-primary" id="btnCT" data-toggle="modal" data-target="#CT">Create Trigger</button>
+            <button type="button" name="imsiButton" class="btn btn-w-m btn-primary" id="btnDT" data-toggle="modal" data-target="#DT" disabled>Deactivate Trigger</button>
 
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="CT" tabindex="-1" role="dialog">
+<form class="modal fade" id="CT" tabindex="-1" role="dialog" action="http://localhost:3000/create_trigger" method="post" onsubmit="$('#CT').modal('hide')">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -84,11 +56,11 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="form-group"><label>Trigger name</label> <input type="name" placeholder="Name" class="form-control" required></div>
+                    <div class="form-group"><label>Trigger name</label> <input name="trigger_name" type="text" placeholder="Name" class="form-control" required></div>
                     <div class="form-group">
                         <label class>Select type</label>
                         <div class="input-group">
-                            <select data-placeholder="Select type" class="chosen-select" style="width:350px;" tabindex="2" name="items">
+                            <select name="trigger_type" type="text" data-placeholder="Select type" class="chosen-select" style="width:350px;" tabindex="2" name="items">
                                 <option value="point">Point in time</option>
                                 <option value="time">Time past from first activity</option>
                                 <option value="threshold">Data threshold</option>
@@ -99,7 +71,7 @@
                     <div class="form-group">
                         <label class>Select action</label>
                         <div class="input-group">
-                            <select data-placeholder="Select type" class="chosen-select" style="width:350px;" tabindex="2" name="items2">
+                            <select data-placeholder="Select type" type="text" class="chosen-select" style="width:350px;" tabindex="2" name="items2">
                                 <option value="changeSP">Change SP</option>
                                 <option value="sms">Send SMS</option>
                             </select>
@@ -110,7 +82,7 @@
                     <div id="showdiv" class="form-group">
                         <label>Select SP</label>
                             <div class="input-group">
-                                <select data-placeholder="Select SIM..." class="chosen-select" style="width:350px;" tabindex="2">
+                                <select name="SPSelect" data-placeholder="Select SIM..." class="chosen-select" style="width:350px;" tabindex="2">
                                     <option value="">Select SP</option> 
                                 </select>
                             </div>
@@ -120,29 +92,34 @@
             </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
         </div>
-</div>
+</form>
 
 
-<div class="modal fade" id="DT" tabindex="-1" role="dialog">
+<form class="modal fade" id="DT" tabindex="-1" role="dialog" action="http://localhost:3000/deactivate_triggers" method="post" onsubmit="$('#DT').modal('hide')">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="DElabel">Delete</h4>
+                    <h4 class="modal-title" id="DElabel">Deactivate</h4>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">IMSI</div>
+                    <div class="panel-body" name="currentIMSI"> </div>
+                    <input class="panel-body" name="currentIMSIInput" type="text" hidden> </input>
                 </div>
                 <div class="modal-body">
-                    <div><p>Do you want to delete checked triggers?</p></div>
+                    <div><p>Do you want to deactivate checked triggers?</p></div>
                 </div>
             </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Confirm</button>
+                    <button type="submit" class="btn btn-primary">Confirm</button>
                 </div>
         </div>
-</div>
+</form>
 
 
 
@@ -166,13 +143,62 @@
 
 
 <script>
-   $(document).ready(function () {
-        $('#escalation').DataTable( {
-             "columnDefs": [
-            {className: "clickable-row", "targets": [1] }
-                            ]
-            
-    })});
+    $.post("http://localhost:3000/get_profiles", function (data) {
+        $.each(data, function (i, word) {
+            console.log(word._id)
+            $("[name='SPSelect']").append("<option>" + word._id + "</option>");
+        });
+    });
+
+    var simple_checkbox = function ( data, type, full, meta ) {
+        var is_checked = data == true ? "checked" : "";
+        return '<input type="checkbox" onclick="return false;" onkeydown="return false; class="checkbox" ' +
+            is_checked + ' />';
+    }
+    var table = $('#escalation').DataTable({
+        ajax: {
+            url: 'http://localhost:3000/triggers',
+            type: 'GET',
+            dataSrc: ""
+        },
+        columnDefs: [{
+            orderable: false,
+            className: 'select-checkbox',
+            targets: 0
+        }],
+        select: {
+            style: 'os',
+            selector: 'td:first-child'
+        },
+        order: [[1, 'asc']],
+        'columns': [
+            {"data": null, "defaultContent": "<input name='selectionCheckbox' type='checkbox' class='ajax-edit' data-toggle='modal' style='vertical-align: middle'></input>" },
+            {"data": "id", "defaultContent": " "},
+            {"data": "name", "defaultContent": " "},
+            {"data": "type", "defaultContent": " "},
+            {"data": "creation_date", "defaultContent": " "},
+            {"data": "sim_count", "defaultContent": " "},
+            {"data": "state", "defaultContent": " "},
+        ],
+    });
+
+    // Handle form submission event
+    $('#escalation').on('submit', function (e) {
+        var form = this;
+
+        var rows_selected = table.column(0).checkboxes.selected();
+
+        // Iterate over all selected checkboxes
+        $.each(rows_selected, function (index, rowId) {
+            // Create a hidden element
+            $(form).append(
+                $('<input>')
+                    .attr('type', 'hidden')
+                    .attr('name', 'id[]')
+                    .val(rowId)
+            );
+        });
+    });
 </script>
 
 <script>
@@ -217,5 +243,27 @@
         $("#escalation tr td:not(:first-child)").attr('data-toggle','modal');
         $("#escalation tr td:not(:first-child)").attr('data-target','#showInfoTriggers');
         $("#escalation tr td:not(:first-child)").attr('style','cursor:pointer');
+
+
 </script>
+
+<script>
+    $('button[name=imsiButton]').on( "click", function() {
+        $('div[name=currentIMSI]').empty();
+        var n = 1;
+        var txt = ' ';
+        for (var x=0;x<200;x+=1){
+            if($('input[name="selectionCheckbox"]').eq(x).prop('checked')){
+                txt += $("tr td").eq(n).text();
+                txt += ", ";
+            }
+            n+=7;
+        }
+        $('div[name=currentIMSI]').append(" "+txt+" ");
+        if(" "+txt+" " != "") {
+            $('input[name=currentIMSIInput]').val(" " + txt + " ");
+        }
+    });
+</script>
+
 
